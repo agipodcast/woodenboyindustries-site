@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://woodenboyindustries.com/sitemap.xml
+Sitemap: https://woodenboyindustriesai.com/sitemap.xml

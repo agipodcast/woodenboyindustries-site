@@ -1,6 +1,6 @@
 # Wooden Boy Industries
 
-Static source for [woodenboyindustries.com](https://woodenboyindustries.com/).
+Static source for [woodenboyindustriesai.com](https://woodenboyindustriesai.com/).
 
 ## Local preview
 
