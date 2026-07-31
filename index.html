@@ -305,15 +305,31 @@
     </div>
   </div>
 
-  <!-- secondary -->
-  <div style="background:#F7F1E4;">
-    <div style="max-width:1120px; margin:0 auto; padding:clamp(44px,6vw,72px) clamp(20px,5vw,56px); display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
-      <div id="field-notes" style="flex:1 1 360px; min-width:0; background:#FDFAF2; border:1px solid rgba(107,74,46,0.32); border-radius:14px; padding:clamp(24px,3vw,36px);">
+  <!-- Field Notes: the canonical archive stays with School's Out; WBI features the current issue. -->
+  <div id="field-notes" style="background:#F7F1E4;">
+    <div style="max-width:1120px; margin:0 auto; padding:clamp(44px,6vw,72px) clamp(20px,5vw,56px); display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr)); gap:20px; align-items:stretch;">
+      <article style="min-width:0; overflow:hidden; background:#08070B; border:1px solid rgba(107,74,46,0.55); border-radius:14px; display:flex; flex-direction:column;">
+        <a href="https://schoolsout.agipodcast.ai/field-notes-issue-6" target="_blank" rel="noopener noreferrer" aria-label="Read Field Notes Issue 6: The Staff-Room AI Test on School's Out Saturdays" style="display:block; background:#10203B;">
+          <img src="https://schoolsout.agipodcast.ai/field-notes-header.png" alt="School's Out Field Notes: practical writing for educators about AI, school, work, and what students need next" style="display:block; width:100%; aspect-ratio:16/7; object-fit:cover;">
+        </a>
+        <div style="padding:clamp(24px,3vw,36px); display:flex; flex-direction:column; flex:1;">
+          <div style="font-family:SFMono-Regular, Consolas, Menlo, monospace; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; color:#F5B819; margin-bottom:12px;">Current issue · July 13, 2026</div>
+          <h2 style="margin:0 0 12px; font-weight:800; font-size:clamp(24px,2.9vw,34px); line-height:1.12; letter-spacing:-0.025em; color:#F7F1E4;">The Staff-Room AI Test</h2>
+          <p style="margin:0 0 22px; font-size:17.5px; line-height:1.7; color:#D6CBB8;">Give AI one job, one boundary, and one receipt. Then compare notes with another teacher.</p>
+          <p style="margin:auto 0 22px; font-size:15.5px; line-height:1.6; color:#BFB3A0;">Field Notes is published by School&rsquo;s Out Saturdays inside the AGI Podcast Network and informs Wooden Boy&rsquo;s education work.</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="https://schoolsout.agipodcast.ai/field-notes-issue-6" target="_blank" rel="noopener noreferrer" style="background:#F5B819; color:#14110E; font-weight:700; font-size:17px; padding:14px 20px; border-radius:9px; min-height:50px; display:inline-flex; align-items:center;">Read the current issue</a>
+            <a href="https://schoolsout.agipodcast.ai/field-notes" target="_blank" rel="noopener noreferrer" style="border:1.5px solid rgba(247,241,228,0.45); color:#F7F1E4; font-weight:600; font-size:17px; padding:14px 20px; border-radius:9px; min-height:50px; display:inline-flex; align-items:center;">Browse the archive</a>
+          </div>
+        </div>
+      </article>
+
+      <div style="min-width:0; background:#FDFAF2; border:1px solid rgba(107,74,46,0.32); border-radius:14px; padding:clamp(24px,3vw,36px);">
         <div style="font-family:SFMono-Regular, Consolas, Menlo, monospace; font-size:14px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; color:#2B1D12; margin-bottom:12px;">The newsletter</div>
-        <div style="font-weight:800; font-size:clamp(21px,2.2vw,26px); line-height:1.15; letter-spacing:-0.02em; color:#14110E; margin-bottom:10px;">Field Notes</div>
+        <div style="font-weight:800; font-size:clamp(21px,2.2vw,26px); line-height:1.15; letter-spacing:-0.02em; color:#14110E; margin-bottom:10px;">Get Field Notes by email</div>
         <p style="margin:0 0 18px; font-size:17.5px; line-height:1.7; color:#4A4238;">One practical signal from the work. One small thing worth thinking about. One question you can bring to your next meeting.</p>
         <div id="field-notes-form" role="region" aria-label="Field Notes signup form"></div>
-        <div style="margin-top:12px; font-size:15.5px; line-height:1.6; color:#4A4238;">Unsubscribe in one click, any time.</div>
+        <div style="margin-top:12px; font-size:15.5px; line-height:1.6; color:#4A4238;">Published by AGI Podcast. Unsubscribe in one click, any time.</div>
       </div>
     </div>
   </div>
@@ -349,13 +365,29 @@
 <script charset="utf-8" src="https://js-na2.hsforms.net/forms/embed/v2.js"></script>
 <script>
   window.addEventListener("DOMContentLoaded", function () {
-    if (window.hbspt) {
+    var target = document.getElementById("field-notes-form");
+    if (!target) return;
+
+    // If the embed never paints, leave a working way to get in touch rather than an empty box.
+    function showFallback() {
+      if (target.childElementCount > 0) return;
+      target.innerHTML = '<p style="margin:0; font-size:17.5px; line-height:1.7; color:#4A4238;">' +
+        'The signup form did not load. ' +
+        '<a href="https://share-na2.hsforms.com/172rws_4LT7CcG4mtdk137w41aedp" target="_blank" rel="noopener noreferrer" style="color:#14110E; font-weight:600;">Get in touch here</a>' +
+        ' and we will add you to Field Notes.</p>';
+    }
+
+    if (window.hbspt && window.hbspt.forms) {
       window.hbspt.forms.create({
         portalId: "244029517",
         formId: "3fbae9ad-3525-46c4-aeaf-460d6fac64ca",
         region: "na2",
         target: "#field-notes-form"
       });
+      // HubSpot paints asynchronously and can take several seconds; only fall back if nothing arrived.
+      window.setTimeout(showFallback, 8000);
+    } else {
+      showFallback();
     }
   });
 </script>
