@@ -36,5 +36,21 @@
     <section class="quote"><div class="wrap quote-in"><h2>If one AI question keeps circling your leadership table, tell us what it is.</h2><p>Use one non-sensitive sentence. We will confirm whether the Design Lab fits and send a written quote.</p><a class="button" data-quote href="https://share-na2.hsforms.com/1VuA0GWn8SKGlTLhcTV_U8g41aedp?utm_source=wbi-site&amp;utm_medium=landing-page&amp;utm_campaign=district-leaders-ai-design-lab&amp;design_lab_utm_source=wbi-site&amp;design_lab_utm_medium=landing-page&amp;design_lab_utm_campaign=district-leaders-ai-design-lab&amp;design_lab_landing_url=https%3A%2F%2Fwoodenboyindustriesai.com%2Fdistrict-leaders-ai-design-lab%2F">Request a Design Lab quote</a></div></section>
   </main>
   <footer class="footer"><div class="wrap">&copy; 2026 Wooden Boy Industries · <a href="/">woodenboyindustriesai.com</a></div></footer>
+  <script>
+    (function () {
+      var incoming = new URLSearchParams(window.location.search);
+      var keys = ['utm_source', 'utm_medium', 'utm_campaign'];
+      document.querySelectorAll('[data-quote]').forEach(function (link) {
+        var target = new URL(link.href);
+        keys.forEach(function (key) {
+          if (incoming.has(key)) {
+            target.searchParams.set(key, incoming.get(key));
+            target.searchParams.set('design_lab_' + key, incoming.get(key));
+          }
+        });
+        link.href = target.toString();
+      });
+    }());
+  </script>
 </body>
 </html>
