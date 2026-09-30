@@ -1,0 +1,2836 @@
+<!DOCTYPE html>
+<html lang="en" class="single-slide-mode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini for K-8 Educators</title>
+  <meta name="description" content="A beginner's hands-on Gemini training for K-8 teachers, from Wooden Boy Industries.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#08070B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@600&display=swap">
+  <style>
+
+    :root {
+      --bg:               #ffffff;
+      --layer:            #FDFAF2;
+      --layer-2:          #DDD2BF;
+      --border:           #DDD2BF;
+      --border-strong:    #6B4A2E;
+      --text:             #2E2114;
+      --text-mid:         #4A4238;
+      --text-inverse:     #ffffff;
+      --primary:          #14110E;
+      --primary-deep:     #08070B;
+      --ground:           #08070B;
+      --accent:           #F5B819;
+      --accent-deep:      #6B4A2E;
+      --neutral:          #6B4A2E;
+      --success:          #2b7a4b;
+      --warning:          #8a6a00;
+      --danger:           #9b2226;
+      --white:            #ffffff;
+      --sp-1: 0.25rem;
+      --sp-2: 0.5rem;
+      --sp-3: 0.75rem;
+      --sp-4: 1rem;
+      --sp-5: 1.5rem;
+      --sp-6: 2rem;
+      --sp-7: 2.5rem;
+      --sp-8: 3rem;
+      --radius-card: 10px;
+      --radius-hero: 18px;
+      --strip-h: 2.75rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 100%; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', 'Open Sans', Arial, sans-serif;
+      font-size: 1rem; line-height: 1.7;
+      color: var(--text); background-color: var(--bg);
+    }
+
+    .nav-bar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 3rem; padding: 0 var(--sp-4);
+      background-color: var(--ground);
+      background-image: linear-gradient(135deg, #08070B 0%, #08070B 100%);
+      color: #ffffff;
+      font-size: 0.875rem;
+    }
+    .nav-bar-title { font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .nav-bar-controls { display: flex; align-items: center; gap: var(--sp-3); }
+    .nav-bar button {
+      background: none; border: 1px solid transparent;
+      color: #ffffff; font-family: inherit;
+      font-size: 0.875rem; cursor: pointer;
+      padding: var(--sp-1) var(--sp-2);
+      border-radius: 4px;
+    }
+    .nav-bar button:hover { background-color: rgba(255,255,255,0.14); }
+    .nav-bar button:disabled { opacity: 0.25; cursor: not-allowed; }
+    .nav-bar button:disabled:hover { background-color: transparent; }
+    .nav-bar button.active { background-color: rgba(245, 184, 25, 0.35); }
+    .slide-counter { font-variant-numeric: tabular-nums; opacity: 0.75; }
+    #prevBtn, #nextBtn { display: none; }
+    html.single-slide-mode #prevBtn,
+    html.single-slide-mode #nextBtn { display: inline-block; }
+
+    html.single-slide-mode body { overflow: hidden; }
+    
+    html.single-slide-mode .slides-container {
+      max-width: none;
+      padding: 0 max(var(--sp-4), calc((100% - 52rem) / 2 + var(--sp-4)));
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 3rem - var(--strip-h));
+      overflow-y: auto;
+    }
+    html.single-slide-mode .slide {
+      display: none;
+      border-bottom: none;
+      padding-top: var(--sp-6);
+      padding-bottom: var(--sp-6);
+      flex: 1 0 auto;
+    }
+    html.single-slide-mode .slide.active-slide { display: block; }
+
+    .slides-container {
+      max-width: 52rem; margin: 0 auto;
+      padding: var(--sp-6) var(--sp-4);
+    }
+
+    .slide {
+      padding: var(--sp-7) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .slide:last-child { border-bottom: none; }
+
+    .slide.title-slide { padding: var(--sp-8) 0; }
+    .slide.title-slide .logo-lockup img {
+      display: block; max-width: 320px; width: 100%; height: auto;
+      margin: 0 0 var(--sp-6) 0;
+    }
+    .slide.title-slide h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 3rem; font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+      margin-bottom: var(--sp-4);
+    }
+    .slide.title-slide h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem; font-weight: 300; line-height: 1.4;
+      color: var(--text-mid); margin-bottom: var(--sp-5);
+    }
+    .slide.title-slide .meta {
+      color: var(--text-mid); font-size: 0.875rem;
+      margin-top: var(--sp-5);
+    }
+
+    .slide h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem; font-weight: 700; line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--primary);
+      margin-bottom: var(--sp-5);
+    }
+    .slide h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.25rem; font-weight: 600; line-height: 1.4;
+      color: var(--text);
+      margin-top: var(--sp-6); margin-bottom: var(--sp-3);
+    }
+    .slide h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600; line-height: 1.4;
+      margin-top: var(--sp-5); margin-bottom: var(--sp-2);
+      color: var(--text-mid); text-transform: uppercase;
+      letter-spacing: 0.6px; font-size: 0.75rem;
+    }
+    .slide p {
+      font-size: 1rem; line-height: 1.7;
+      margin-bottom: var(--sp-4); max-width: 42rem;
+    }
+    .slide strong { font-weight: 600; }
+    .slide em { font-style: italic; }
+    .slide a { color: var(--primary); text-decoration: none; border-bottom: 1px solid transparent; }
+    .slide a:hover { border-bottom-color: var(--primary); }
+
+    .slide ul, .slide ol {
+      margin-bottom: var(--sp-4); padding-left: var(--sp-5);
+    }
+    .slide li { line-height: 1.7; margin-bottom: var(--sp-2); }
+
+    .slide blockquote {
+      border-left: 3px solid var(--accent);
+      background-color: var(--layer);
+      padding: var(--sp-4) var(--sp-5); margin: var(--sp-5) 0;
+      border-radius: 0 var(--radius-card) var(--radius-card) 0;
+    }
+    .slide blockquote p { margin-bottom: 0; }
+
+    .prompt-block {
+      position: relative;
+      background: var(--layer); border-left: 3px solid var(--accent);
+      padding: var(--sp-4); padding-right: 6.5rem; margin: var(--sp-5) 0;
+      font-family: 'IBM Plex Mono', 'SF Mono', 'Menlo', Consolas, monospace;
+      font-size: 0.875rem; line-height: 1.6;
+      white-space: pre-wrap; word-break: break-word;
+      border-radius: 0 var(--radius-card) var(--radius-card) 0;
+    }
+    .prompt-block .label {
+      display: block; font-family: 'Inter', sans-serif;
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.6px;
+      color: var(--accent-deep); font-weight: 600;
+      margin-bottom: var(--sp-2);
+    }
+    .prompt-block .copy-btn {
+      position: absolute;
+      top: var(--sp-3);
+      right: var(--sp-3);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      background: var(--white);
+      color: var(--primary);
+      border: 1px solid var(--border);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 0.375rem 0.625rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .prompt-block .copy-btn:hover {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+    .prompt-block .copy-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .prompt-block .copy-btn.copied {
+      background: var(--success);
+      color: var(--white);
+      border-color: var(--success);
+    }
+    .prompt-block .copy-btn svg {
+      width: 0.875rem;
+      height: 0.875rem;
+      flex-shrink: 0;
+    }
+
+    .callout {
+      border-left: 3px solid var(--warning);
+      background: #fff8e6;
+      padding: var(--sp-4); margin: var(--sp-5) 0;
+      border-radius: 0 var(--radius-card) var(--radius-card) 0;
+    }
+    .callout.danger { border-left-color: var(--danger); background: #fdefef; }
+    .callout.safe { border-left-color: var(--success); background: #eef7ef; }
+    .callout.note { border-left-color: var(--primary); background: var(--layer); }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout strong.tag {
+      display: inline-block; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      margin-right: var(--sp-2); font-weight: 600;
+    }
+
+    .slide table {
+      width: 100%; border-collapse: collapse;
+      margin: var(--sp-5) 0; font-size: 0.9375rem;
+    }
+    .slide thead th {
+      text-align: left; font-weight: 600; font-size: 0.75rem;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      color: var(--text-mid);
+      background-color: var(--layer);
+      padding: var(--sp-3) var(--sp-4);
+      border-bottom: 2px solid var(--primary);
+    }
+    .slide tbody td {
+      padding: var(--sp-3) var(--sp-4);
+      border-bottom: 1px solid var(--border); vertical-align: top;
+      line-height: 1.6;
+    }
+    .slide tbody tr:hover { background-color: var(--layer); }
+
+    .slide code {
+      font-family: 'IBM Plex Mono', 'SF Mono', 'Menlo', Consolas, monospace;
+      font-size: 0.875rem;
+    }
+    .slide p code, .slide li code, .slide td code {
+      background-color: var(--layer); padding: 0.125em 0.375em;
+      border-radius: 3px; color: var(--accent-deep);
+    }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); margin: var(--sp-5) 0; }
+    .split > div { min-width: 0; }
+    @media (max-width: 720px) { .split { grid-template-columns: 1fr; } }
+
+    .timing {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--accent-deep);
+      background: rgba(245, 184, 25, 0.12);
+      padding: var(--sp-1) var(--sp-3);
+      border-radius: 12px;
+      margin-left: var(--sp-3);
+      vertical-align: middle;
+      font-weight: 500;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent-deep);
+      background: rgba(245, 184, 25, 0.12);
+      padding: var(--sp-1) var(--sp-3);
+      margin-bottom: var(--sp-4);
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .slide-footer {
+      margin-top: var(--sp-7);
+      padding-top: var(--sp-3);
+      font-size: 0.75rem;
+      color: var(--text-mid);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-top: 1px solid var(--border);
+    }
+    .slide-footer-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .slide-footer-page { font-variant-numeric: tabular-nums; white-space: nowrap; margin-left: var(--sp-4); }
+
+    @media print {
+      .nav-bar { background: var(--ground) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .slide { page-break-after: always; }
+      .progress-strip, .check-wrap, #joinOverlay, #gateOverlay, #toast { display: none !important; }
+    }
+
+    
+
+
+    
+    .slide .lead { font-size: 1.5rem; line-height: 1.45; font-weight: 500; color: var(--text); max-width: 42rem; margin-bottom: var(--sp-5); }
+    
+    .slide ol.big-list li, .slide ul.big-list li { font-size: 1.3rem; line-height: 1.45; margin-bottom: var(--sp-3); }
+
+    
+    .slide details.how {
+      border: 1px solid var(--border); border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-card) var(--radius-card) 0;
+      background: var(--white); margin: var(--sp-5) 0;
+    }
+    .slide details.how > summary {
+      cursor: pointer; list-style: none; display: flex; align-items: center; gap: var(--sp-3);
+      padding: var(--sp-3) var(--sp-4); font-weight: 600; color: var(--primary);
+    }
+    .slide details.how > summary::-webkit-details-marker { display: none; }
+    .slide details.how > summary::before { content: "\25B8"; color: var(--accent); font-size: 1.1rem; transition: transform 0.15s ease; }
+    .slide details.how[open] > summary::before { transform: rotate(90deg); }
+    .slide details.how > summary:hover { background: var(--layer); }
+    .slide details.how > summary .hint { margin-left: auto; font-weight: 400; font-size: 0.8125rem; color: var(--text-mid); }
+    .slide details.how[open] > summary .hint { display: none; }
+    .slide details.how .how-body { padding: 0 var(--sp-4) var(--sp-4); border-top: 1px solid var(--border); }
+    .slide ol.steps { list-style: none; counter-reset: step; padding-left: 0 !important; margin: 0; }
+    .slide ol.steps > li { counter-increment: step; position: relative; padding-left: 2.5rem; margin-top: var(--sp-5); }
+    .slide ol.steps > li::before {
+      content: counter(step); position: absolute; left: 0; top: 0.1rem;
+      width: 1.75rem; height: 1.75rem; border-radius: 50%;
+      background: var(--primary); color: var(--white); font-weight: 700; font-size: 0.875rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slide figure.shot { margin: var(--sp-3) 0 0; }
+    
+    .slide figure.shot img {
+      display: block; width: auto; max-width: 100%; height: auto; max-height: 32rem;
+      border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 1px 4px rgba(20, 17, 14, 0.08);
+    }
+
+    
+    .prompt-block.clip {
+      max-height: 20rem; overflow-y: auto; overflow-x: hidden;
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--sp-3);
+      align-content: start; padding-right: var(--sp-3);
+    }
+    .prompt-block.clip > .label { grid-column: 1; grid-row: 1; }
+    .prompt-block.clip > .copy-btn { grid-column: 2; grid-row: 1 / span 2; align-self: start; position: sticky; top: 0; right: auto; }
+    
+    .prompt-block.clip::-webkit-scrollbar { width: 10px; }
+    .prompt-block.clip::-webkit-scrollbar-track { background: transparent; }
+    .prompt-block.clip::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; border: 2px solid var(--layer); }
+    @supports not selector(::-webkit-scrollbar) {
+      .prompt-block.clip { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+    }
+    .prompt-block.clip + .clip-note { font-size: 0.875rem; color: var(--text-mid); margin-top: calc(-1 * var(--sp-4)); }
+
+    
+    .slide figure.shot figcaption { margin-top: var(--sp-2); font-size: 0.8125rem; line-height: 1.45; color: var(--text-mid); }
+
+    
+    .downloads { list-style: none; padding: 0 !important; margin: var(--sp-4) 0 var(--sp-5); display: grid; gap: var(--sp-2); }
+    .downloads li { margin: 0; }
+    .downloads a.file {
+      display: flex; align-items: baseline; gap: var(--sp-3); flex-wrap: wrap;
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--layer); border: 1px solid var(--border); border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius-card) var(--radius-card) 0;
+      color: var(--text); text-decoration: none;
+    }
+    .downloads a.file:hover { border-color: var(--primary); background: #FBF1D8; }
+    .downloads .file-name { font-weight: 600; color: var(--primary); }
+    .downloads .file-name::before { content: "\2193\00a0"; color: var(--accent); font-weight: 700; }
+    .downloads .file-kind { font-size: 0.8125rem; color: var(--text-mid); margin-left: auto; }
+
+    
+    .slide a[target="_blank"] { text-decoration: underline; text-underline-offset: 3px; border-bottom: none; }
+    .slide a[target="_blank"]::after { content: "\00a0\2197"; font-size: 0.85em; color: var(--accent); }
+
+    
+    .slide ul.jump-list { list-style: none; padding: 0 !important; margin: var(--sp-4) 0; display: grid; gap: var(--sp-2); }
+    .slide ul.jump-list li { margin: 0; line-height: 1.4; }
+    .slide ul.jump-list a {
+      display: flex; align-items: center; gap: var(--sp-3);
+      padding: var(--sp-3) var(--sp-4); font-size: 1.15rem; font-weight: 600;
+      background: var(--layer); border: 1px solid var(--border); border-radius: var(--radius-card);
+      color: var(--primary);
+    }
+    .slide ul.jump-list a:hover, .slide ul.jump-list a:focus-visible { border-color: var(--primary); background: #FBF1D8; }
+    .slide ul.jump-list a::after { content: "\2192"; margin-left: auto; color: var(--accent); font-weight: 700; }
+    .slide .jump-num {
+      flex: none; min-width: 2.25rem; height: 2.25rem; padding: 0 var(--sp-2); border-radius: 999px;
+      background: var(--primary); color: var(--white); font-size: 0.875rem; font-weight: 700;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .slide .next-step { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-3); margin: var(--sp-5) 0; }
+    .slide .next-step details.how { align-self: stretch; margin: 0; }
+    .slide a.done-btn {
+      display: inline-flex; align-items: baseline; gap: var(--sp-3); flex-wrap: wrap;
+      padding: var(--sp-3) var(--sp-6); border: none; border-radius: 999px;
+      background: var(--primary); color: var(--white); font-weight: 700; font-size: 1.15rem;
+    }
+    .slide a.done-btn:hover, .slide a.done-btn:focus-visible { background: var(--primary-deep); border: none; }
+    .slide a.done-btn .hint { font-weight: 400; font-size: 0.875rem; opacity: 0.85; }
+
+    
+.progress-strip {
+      position: sticky; top: 3rem; z-index: 90;
+      height: var(--strip-h);
+      display: flex; align-items: center; gap: var(--sp-2);
+      padding: 0 var(--sp-4);
+      background: var(--layer);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto; white-space: nowrap;
+      scrollbar-width: thin;
+    }
+    .chip {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      font-size: 0.75rem; font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-mid);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.2rem 0.7rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .chip .chip-state { font-size: 0.65rem; letter-spacing: 0.6px; text-transform: uppercase; }
+    .chip.locked { opacity: 0.65; cursor: default; }
+    .chip.locked .chip-state { color: var(--neutral); }
+    .chip.open { border-color: var(--primary); color: var(--primary); }
+    .chip.done { border-color: var(--success); color: var(--success); background: #eef7ef; }
+    
+    :root {
+      --bg:            #F7F1E4;   
+      --layer:         #FDFAF2;   
+      --layer-2:       #EDE4D3;
+      --border:        #DDD2BF;
+      --border-strong: #6B4A2E;   
+      --text:          #2E2114;   
+      --text-mid:      #4A4238;   
+      --text-inverse:  #F7F1E4;
+      --primary:       #14110E;   
+      --primary-deep:  #08070B;
+      --ground:        #08070B;   
+      --accent:        #F5B819;   
+      --accent-deep:   #6B4A2E;   
+      --neutral:       #4A4238;
+      --success:       #3F6B45;
+      --warning:       #F5B819;
+      --danger:        #9B2226;
+      --white:         #FDFAF2;
+      --gold:          #F5B819;
+      --gold-tint:     #FBF1D8;
+      --walnut:        #6B4A2E;
+      --ink:           #14110E;
+      --sand:          #BFB3A0;
+      --mono:          'JetBrains Mono', Menlo, Consolas, monospace;
+    }
+    body { font-family: 'Inter', Arial, Helvetica, sans-serif; }
+
+    
+    .nav-bar {
+      background-color: var(--ground); background-image: none;
+      color: #F7F1E4; border-bottom: 3px solid var(--gold);
+    }
+    .nav-bar-title {
+      font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0;
+      display: flex; align-items: center; gap: var(--sp-3); min-width: 0;
+    }
+    .nav-bar-title .wbi-mark { flex: none; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; color: var(--gold); }
+    .nav-bar-title .sep { flex: none; width: 1px; height: 1rem; background: rgba(245, 184, 25, 0.45); }
+    .nav-bar-title .deck-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+    .nav-bar button { color: #F7F1E4; }
+    .nav-bar button:hover { background-color: rgba(245, 184, 25, 0.2); }
+    .nav-bar button:disabled:hover { background-color: transparent; }
+    @media (max-width: 600px) { .nav-bar-title .wbi-mark, .nav-bar-title .sep { display: none; } }
+
+    
+    .slide.title-slide h1 {
+      font-family: 'Inter', sans-serif; font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.05; color: var(--ink);
+    }
+    .slide.title-slide h3 { font-weight: 400; color: var(--text-mid); }
+    .slide.title-slide .logo-lockup img { width: 220px; max-width: 60%; border-radius: 16px; }
+    .slide h2 {
+      font-family: 'Inter', sans-serif; font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.1; color: var(--ink);
+    }
+    .slide h3 { color: var(--ink); }
+
+    
+    .section-badge {
+      font-family: var(--mono); font-weight: 600; font-size: 0.75rem;
+      letter-spacing: 0.14em; color: var(--walnut);
+      background: none; padding: 0; border-radius: 0;
+    }
+    .slide h4 { font-family: var(--mono); letter-spacing: 0.14em; color: var(--walnut); }
+    .prompt-block .label { font-family: var(--mono); letter-spacing: 0.1em; color: var(--walnut); }
+    .callout strong.tag { font-family: var(--mono); letter-spacing: 0.1em; }
+    .slide thead th { font-family: var(--mono); letter-spacing: 0.1em; color: var(--walnut); border-bottom-color: var(--ink); }
+    .slide code { font-family: var(--mono); }
+    .slide p code, .slide li code, .slide td code { color: var(--walnut); }
+
+    
+    .slide a { color: var(--walnut); }
+    .slide a:hover { border-bottom-color: var(--walnut); }
+    .slide a[target="_blank"]::after { color: var(--walnut); }
+
+    
+    .prompt-block {
+      font-family: 'Inter', Arial, sans-serif; font-size: 0.9375rem;
+      background: var(--layer); border-left-color: var(--gold);
+    }
+    .prompt-block .copy-btn { background: var(--bg); color: var(--ink); border-color: var(--border); }
+    .prompt-block .copy-btn:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+    .prompt-block .copy-btn:focus-visible { outline-color: var(--walnut); }
+    .prompt-block .copy-btn.copied { background: var(--ink); color: var(--gold); border-color: var(--ink); }
+    .prompt-block.clip::-webkit-scrollbar-thumb { border-color: var(--layer); }
+    
+    .slide details.how .prompt-block { background: var(--bg); }
+    .slide details.how .prompt-block.clip::-webkit-scrollbar-thumb { border-color: var(--bg); }
+    .slide details.how .prompt-block .copy-btn { background: var(--layer); }
+
+    .callout { background: #FDF3D3; }
+    .callout.note { border-left-color: var(--walnut); background: var(--layer); }
+    .callout.danger { background: #FBECE9; }
+    .callout.safe { background: #EEF3EA; }
+    .slide blockquote { background: var(--layer); }
+
+    
+    .slide details.how { background: var(--layer); }
+    .slide details.how > summary { color: var(--ink); }
+    .slide details.how > summary::before { color: var(--walnut); }
+    .slide details.how > summary:hover { background: var(--gold-tint); }
+    .slide ol.steps > li::before { background: var(--gold); color: var(--ink); }
+    .slide figure.shot img { box-shadow: 0 1px 4px rgba(20, 17, 14, 0.1); }
+
+    
+    .downloads a.file { border-left-color: var(--gold); }
+    .downloads a.file:hover { border-color: var(--walnut); border-left-color: var(--gold); background: var(--gold-tint); }
+    .downloads .file-name { color: var(--ink); }
+    .downloads .file-name::before { color: var(--walnut); }
+    .slide ul.jump-list a { color: var(--ink); }
+    .slide details.how ul.jump-list a { background: var(--bg); }
+    .slide ul.jump-list a:hover, .slide ul.jump-list a:focus-visible { border-color: var(--walnut); background: var(--gold-tint); }
+    .slide ul.jump-list a::after { color: var(--walnut); }
+    .slide .jump-num { background: var(--gold); color: var(--ink); }
+    .slide a.done-btn { background: var(--gold); color: var(--ink); }
+    .slide a.done-btn:hover, .slide a.done-btn:focus-visible { background: var(--ink); color: var(--gold); }
+
+    
+    .progress-strip { background: var(--layer); }
+    .chip { font-family: 'Inter', sans-serif; background: var(--bg); }
+    .chip:hover { background: var(--gold-tint); }
+    .chip.open { border-color: var(--walnut); color: var(--ink); }
+    .chip .chip-state { font-family: var(--mono); letter-spacing: 0.06em; color: var(--text-mid); }
+
+  </style>
+<link rel="canonical" href="https://woodenboyindustriesai.com/mtca/beginners/"><style>.slide a{overflow-wrap:anywhere}.mtca-main-link{color:#fff;font-size:14px;text-decoration:underline;white-space:nowrap}.nav-bar-controls{flex-shrink:0;gap:8px}.nav-bar #mtcaScrollToggle{border-color:#726037;color:#f5b819}.slide{scroll-margin-top:7rem}@media(max-width:620px){.nav-bar-title{display:none}.nav-bar-controls{width:100%;justify-content:space-between}.nav-bar{padding:0 10px}.mtca-main-link{font-size:13px}.nav-bar #mtcaScrollToggle{font-size:13px}}</style></head>
+<body>
+<div class="nav-bar">
+  <div class="nav-bar-title"><span class="wbi-mark">Wooden Boy Industries</span><span class="sep" aria-hidden="true"></span><span class="deck-name">Gemini for K-8 Educators</span></div>
+  <div class="nav-bar-controls"><a class="mtca-main-link" href="/mtca/">Main session</a><button type="button" id="mtcaScrollToggle" aria-pressed="false">Scroll all slides</button>
+    <button id="prevBtn" type="button" title="Previous slide" aria-label="Previous slide">&larr;</button>
+    <span class="slide-counter"><span id="curSlide">1</span>/<span id="totalSlides">57</span></span>
+    <button id="nextBtn" type="button" title="Next slide" aria-label="Next slide">&rarr;</button>
+  </div>
+</div>
+<nav class="progress-strip" id="strip" aria-label="Sections">
+  <button type="button" class="chip open" data-go="1"><span class="chip-title">Start here</span> <span class="chip-state">Slides 1-4</span></button>
+  <button type="button" class="chip open" data-go="5"><span class="chip-title">Module 1. Meet Gemini</span> <span class="chip-state">Slides 5-21</span></button>
+  <button type="button" class="chip open" data-go="22"><span class="chip-title">Module 2. Gems</span> <span class="chip-state">Slides 22-37</span></button>
+  <button type="button" class="chip open" data-go="38"><span class="chip-title">Module 3. Gemini Notebook</span> <span class="chip-state">Slides 38-46</span></button>
+  <button type="button" class="chip open" data-go="47"><span class="chip-title">Module 4. Classroom-ready assets</span> <span class="chip-state">Slides 47-54</span></button>
+  <button type="button" class="chip open" data-go="55"><span class="chip-title">Take it home</span> <span class="chip-state">Slides 55-57</span></button>
+</nav>
+<main class="slides-container" id="slides">
+  <article class="slide title-slide">
+    <div class="logo-lockup"><img src="images/brand/wbi-logo-gold.png" alt="Wooden Boy Industries"></div>
+    <h1>Gemini for K-8 Educators</h1>
+    <h3>A beginner's hands-on training. Meet Gemini, build a Gem, ground it in your own unit, and leave with materials you can use tomorrow.</h3>
+    <p class="meta">Wooden Boy Industries. woodenboyindustriesai.com</p>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Gemini for K-8 Intro.</span>
+      <span class="slide-footer-page">1</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Start here</span>
+    <h2>How today works</h2>
+    <p class="lead">Go at your own pace, one slide at a time. Stuck? Raise your hand and read me the slide number at the top right.</p>
+    <details class="how">
+      <summary>Tell me more <span class="hint">arrows, tabs, what you need</span></summary>
+      <div class="how-body">
+        <ul>
+          <li><strong>Move with the arrows</strong> at the top of this page, or the arrow keys on your keyboard.</li>
+          <li><strong>Keep two tabs open:</strong> this page in one, Gemini in another. Click between them, or press Ctrl and Tab together.</li>
+          <li><strong>Know how to do a step?</strong> Just do it. <strong>Not sure?</strong> Open "Show me how, step by step" for the steps and pictures.</li>
+          <li><strong>Nothing here is graded.</strong> No quizzes, no scores. Everything is in your workbook at the end.</li>
+        </ul>
+        <h4>What you need</h4>
+        <ul>
+          <li>Your laptop, with Chrome open.</li>
+          <li>Your school Google account, the one your district gave you.</li>
+          <li>A unit you teach, if you brought one. If not, we brought one for you (slide 40).</li>
+        </ul>
+        <div class="callout note">
+          <p><strong class="tag">About the pictures</strong> The step-by-step pictures come from a personal Google account. Your school account's screens may look a little different. Look for the same words. Some pictures show things you may not have, like an Upgrade button or buttons from browser add-ons; a note under those pictures says so.</p>
+        </div>
+        <div class="callout note">
+          <p><strong class="tag">Have the Gemini app on your laptop?</strong> That's fine. Sign in with the same school account. For today, please use Gemini in Chrome at <a href="https://gemini.google.com" target="_blank" rel="noopener"><strong>gemini.google.com</strong></a>, so what you see matches these slides.</p>
+        </div>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">How today works.</span>
+      <span class="slide-footer-page">2</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Start here</span>
+    <h2>Three questions before every prompt</h2>
+    <ol class="big-list">
+      <li><strong>Which account am I in?</strong></li>
+      <li><strong>Is this tool district-approved?</strong></li>
+      <li><strong>Would I be fine if a parent saw this prompt?</strong></li>
+    </ol>
+    <div class="callout danger">
+      <p><strong class="tag">Student information stays out</strong> No names, grades, IEP or 504 details, or behavior records. Write [student] instead.</p>
+    </div>
+    <details class="how">
+      <summary>Tell me more <span class="hint">why these three</span></summary>
+      <div class="how-body">
+        <ol>
+          <li><strong>Which account am I in?</strong> Your school account and a personal account look almost the same on screen. They are not treated the same. Slide 8 shows the difference.</li>
+          <li><strong>Is this tool district-approved?</strong> Your district decides which tools you can use for school work. If you're not sure, ask before you use it with anything real.</li>
+          <li><strong>Would I be fine if a parent saw this prompt?</strong> If the answer is no, rewrite it. That one question catches almost everything.</li>
+        </ol>
+        <p>Keep student information out even if your district has confirmed its protections in writing. Taking out anything that identifies a child costs nothing and protects kids. You'll see a short reminder of these three above most starter prompts today.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Three questions.</span>
+      <span class="slide-footer-page">3</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Start here</span>
+    <h2>Grab your materials</h2>
+    <p class="lead">Download the quick reference card. Rather follow along in a PDF? Grab the workbook too.</p>
+    <ul class="downloads">
+      <li><a class="file" href="downloads/Gemini-K8_Quick-Reference.pdf" download><span class="file-name">Quick reference card</span><span class="file-kind">PDF, 1 page</span></a></li>
+      <li><a class="file" href="downloads/Gemini-K8_Workbook.pdf" download><span class="file-name">Workbook, every step with pictures</span><span class="file-kind">PDF</span></a></li>
+    </ul>
+    <details class="how">
+      <summary>Tell me more <span class="hint">the workbook, and your unit for later</span></summary>
+      <div class="how-body">
+        <p><strong>The workbook:</strong> this whole training in one PDF, with every prompt, every step, and the pictures. Some people like it open beside the browser instead of switching between two tabs. To copy a prompt, use the Copy button on the slide. It copies the whole prompt cleanly. You'll get the workbook again at the end, along with a copy you can edit (slide 57).</p>
+        <p><strong>Your own unit:</strong> a unit overview, a reading passage, your standards, and a few lesson slides are plenty. Google Docs, Google Slides, PDFs, and Word files all work. Take student names off anything first.</p>
+        <p><strong>No unit with you?</strong> Use one of ours: Grade 3 science (plant life cycles) or Grade 6 ELA (point of view). They're fictional and free to use here. You'll download one unit's files on slide 40, right where you use them.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Your materials.</span>
+      <span class="slide-footer-page">4</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 1</span>
+    <h2>Meet Gemini</h2>
+    <p class="lead">Sign in the right way, learn one prompt pattern, and make two or three things you can use tomorrow.</p>
+    <div class="callout safe">
+      <p><strong class="tag">You can't break it</strong> If a result is strange, try again, or ask it to fix what's wrong.</p>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Module 1. Meet Gemini.</span>
+      <span class="slide-footer-page">5</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 1</span>
+    <h2>One name, two things</h2>
+    <p class="lead">The Gemini model is the engine. The Gemini app is the car you drive.</p>
+    <svg viewBox="0 0 640 230" role="img" aria-label="One Gemini model powers several apps: the Gemini app, Gemini Notebook, and Gemini in Classroom." style="width:100%;max-width:40rem;height:auto;display:block;margin:1.5rem 0">
+      <defs>
+        <marker id="gk8-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6B4A2E"/></marker>
+      </defs>
+      <rect x="10" y="70" width="200" height="90" rx="12" fill="#F5B819"/>
+      <text x="110" y="108" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="18" fill="#14110E">Gemini model</text>
+      <text x="110" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#14110E">the engine</text>
+      <g font-family="Inter, sans-serif">
+        <rect x="330" y="10" width="300" height="60" rx="10" fill="#FDFAF2" stroke="#6B4A2E" stroke-width="2"/>
+        <text x="480" y="36" text-anchor="middle" font-weight="700" font-size="16" fill="#14110E">Gemini app</text>
+        <text x="480" y="57" text-anchor="middle" font-size="14" fill="#4A4238">gemini.google.com (today)</text>
+        <rect x="330" y="85" width="300" height="60" rx="10" fill="#FDFAF2" stroke="#6B4A2E" stroke-width="2"/>
+        <text x="480" y="111" text-anchor="middle" font-weight="700" font-size="16" fill="#14110E">Gemini Notebook</text>
+        <text x="480" y="132" text-anchor="middle" font-size="14" fill="#4A4238">notebook.google.com (today)</text>
+        <rect x="330" y="160" width="300" height="60" rx="10" fill="#FDFAF2" stroke="#BFB3A0" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="480" y="186" text-anchor="middle" font-weight="700" font-size="16" fill="#14110E">Gemini in Classroom</text>
+        <text x="480" y="207" text-anchor="middle" font-size="14" fill="#4A4238">another car, for another day</text>
+      </g>
+      <path d="M210 100 C 270 90, 280 45, 326 40" fill="none" stroke="#6B4A2E" stroke-width="3" marker-end="url(#gk8-arrow)"/>
+      <path d="M210 115 L 326 115" fill="none" stroke="#6B4A2E" stroke-width="3" marker-end="url(#gk8-arrow)"/>
+      <path d="M210 130 C 270 140, 280 185, 326 190" fill="none" stroke="#6B4A2E" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#gk8-arrow)"/>
+    </svg>
+    <details class="how">
+      <summary>Tell me more <span class="hint">engine, car, and the old name</span></summary>
+      <div class="how-body">
+        <p><strong>The engine, the Gemini model,</strong> is the AI underneath. It reads what you type and writes a response. Google builds it and updates it often. You never touch it directly.</p>
+        <p><strong>The car, the Gemini app,</strong> is what you use at gemini.google.com: the box you type in, your saved chats, Gems, and the menu where you add files.</p>
+        <p>Today you'll drive two cars: the Gemini app and Gemini Notebook (formerly NotebookLM). You may still see the old name in a few places while Google finishes the switch. When your screen looks different from these slides, it's usually because Google moved something on the dashboard.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">The engine and the car.</span>
+      <span class="slide-footer-page">6</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 1</span>
+    <h2>Which account are you in?</h2>
+    <p class="lead">Open <a href="https://gemini.google.com" target="_blank" rel="noopener"><strong>gemini.google.com</strong></a> and check that you're signed in with your <strong>school</strong> account.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">4 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>In Chrome, select <a href="https://gemini.google.com" target="_blank" rel="noopener"><strong>gemini.google.com</strong></a>. It opens in a new tab, so this page stays open.
+            <figure class="shot"><img loading="lazy" src="images/slide07-step1_gemini-home.png" alt="The Gemini home page" loading="lazy"></figure></li>
+          <li>If you see <strong>Sign in</strong> at the top right, select it and sign in with your school account.
+            <figure class="shot"><img loading="lazy" src="images/slide07-step2_sign-in-button.png" alt="The top right corner of the Gemini page, with the Sign in button" loading="lazy"></figure></li>
+          <li>Select your profile picture or initial and read the email address. It should end in your school's domain. Inside Gemini, your picture is at the bottom left corner. On most other Google pages, it's at the top right.
+            <figure class="shot"><img loading="lazy" src="images/slide07-step3_account-email.png" alt="The account panel opened from the picture at the bottom left of Gemini, showing the name and email address" loading="lazy"><figcaption>From a personal account. Your school account may not show the Upgrade button.</figcaption></figure></li>
+          <li>Use a personal Gmail on this laptop too? Give school its own Chrome profile. At the top right of Chrome (above the page), select your picture or initial, then <strong>Add Chrome Profile</strong>.
+            <figure class="shot"><img loading="lazy" src="images/slide07-step4_chrome-add-profile.png" alt="Chrome's profile menu, opened from the picture at the top right of Chrome, with Add Chrome Profile" loading="lazy"></figure></li>
+        </ol>
+      </div>
+    </details>
+    <div class="callout danger">
+      <p><strong class="tag">The number one privacy mistake</strong> Using Gemini in a personal account for school work. The next slide shows why.</p>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">The right account.</span>
+      <span class="slide-footer-page">7</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 1</span>
+    <h2>Your school account vs. a personal one</h2>
+    <p class="lead">Google says chats in a school account aren't reviewed by people or used to improve its generative AI models. Personal accounts work differently.</p>
+    <div class="callout note">
+      <p><strong class="tag">Protection is not permission</strong> Your district's policy is still the final word.</p>
+    </div>
+    <details class="how">
+      <summary>Tell me more <span class="hint">the side-by-side, in Google's terms</span></summary>
+      <div class="how-body">
+        <table>
+          <thead>
+            <tr><th></th><th>School account (Workspace for Education)</th><th>Personal Google account</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Are your chats reviewed by human reviewers?</strong></td><td>No. Google says school chats and uploaded files aren't reviewed by human reviewers.</td><td>Some are. Google says a subset of chats is reviewed by people, including trained service providers, to improve its services.</td></tr>
+            <tr><td><strong>Are your chats used to improve Google's AI models?</strong></td><td>No. Google says they aren't used to improve its generative AI models.</td><td>They can be. Google says that with Keep Activity on, your activity helps improve its services, including training its AI models.</td></tr>
+            <tr><td><strong>What covers it?</strong></td><td>Your district's Workspace for Education agreement with Google.</td><td>Google's terms for personal accounts, explained in its Gemini Apps Privacy Hub.</td></tr>
+            <tr><td><strong>Who at your school can see it?</strong></td><td>Your district's administrators can search Gemini chats.</td><td>No one at your school, and no protection from your district either.</td></tr>
+          </tbody>
+        </table>
+        <p>A chat you share with a link can be read by anyone who has the link, on any account. None of this changes the habit: no student names, grades, IEP details, or behavior records. This is a summary, not legal advice.</p>
+        <p style="font-size:0.875rem;color:var(--text-mid)">Sources: Google's <a href="https://support.google.com/gemini/answer/14620100" target="_blank" rel="noopener">Gemini for Education help page</a>, <a href="https://knowledge.workspace.google.com/admin/getting-started/editions/quickstart-guide-to-gemini-and-gemini-notebook-for-education" target="_blank" rel="noopener">Gemini for Education quickstart</a>, and <a href="https://support.google.com/gemini/answer/13594961" target="_blank" rel="noopener">Gemini Apps Privacy Hub</a>, checked September 2026.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">School vs. personal.</span>
+      <span class="slide-footer-page">8</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 1</span>
+    <h2>Two-minute access check</h2>
+    <p class="lead">Check three things before you need them: Gemini opens, Gemini Notebook opens, and you can add files.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">3 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li><strong>Gemini opens with your school email.</strong> You checked this on slide 7.</li>
+          <li><strong>Gemini Notebook opens.</strong> Select <a href="https://notebook.google.com" target="_blank" rel="noopener"><strong>notebook.google.com</strong></a>. It opens in a new tab. You should see the Gemini Notebook page, with Featured notebooks and a <strong>+ New notebook</strong> button. You don't need to make a notebook yet. Leave the tab open. If you see an error instead, your district may have it turned off. You can still do the Gemini and Gems parts today.
+            <figure class="shot"><img loading="lazy" src="images/slide09-step2_notebook-opens.png" alt="The Gemini Notebook home page, with Featured notebooks and the + New notebook button" loading="lazy"></figure></li>
+          <li><strong>You can add files in Gemini.</strong> Back in Gemini, find the plus sign (<strong>+</strong>) at the left end of the box where you type, and select it.
+            <figure class="shot"><img loading="lazy" src="images/slide09-step3_plus_symbol.png" alt="The Gemini prompt box, with an arrow pointing to the plus sign at its left end" loading="lazy"><figcaption>From a personal account. Your school account may not show the Upgrade button.</figcaption></figure>
+            <p>The plus sign turns into an <strong>X</strong>, and a menu opens. In Gemini, adding a file means uploading it, so look for <strong>Upload files</strong> at the top of the menu. Then select the <strong>X</strong> to close the menu without choosing anything.</p>
+            <figure class="shot"><img loading="lazy" src="images/slide09-step3_add-files-menu.png" alt="The menu open under the X, with Upload files at the top, then Add from Drive and More uploads" loading="lazy"></figure>
+            <p>No <strong>Upload files</strong>? Your school account may not be marked 18 or over. Paste text instead of uploading files; that works for almost everything today.</p></li>
+        </ol>
+      </div>
+    </details>
+    <div class="callout">
+      <p><strong class="tag">Something missing?</strong> It's usually a district setting. You can still do almost everything today by pasting text instead of uploading files. The steps below say what each gap means.</p>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Access check.</span>
+      <span class="slide-footer-page">9</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 1</span>
+    <h2>Start cold: one plain request</h2>
+    <p class="lead">Start a new chat, paste this, and press Enter. This is your before picture.</p>
+    <div class="prompt-block"><span class="label">Starter prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+Write a short parent newsletter blurb about our plant unit.
+</div>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">2 steps, with pictures, and what to look for</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>In the menu on the left, select <strong>New chat</strong>. If the menu is closed, it's the pencil icon at the top left.
+            <figure class="shot"><img loading="lazy" src="images/slide10-step1_new-chat.png" alt="The Gemini menu with New chat" loading="lazy"></figure></li>
+          <li>Paste the prompt into the box where you type, and press Enter.
+            <div class="prompt-block step-copy"><span class="label">Starter prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+Write a short parent newsletter blurb about our plant unit.
+</div>
+            <figure class="shot"><img loading="lazy" src="images/slide10-step2_paste-prompt.png" alt="The cold prompt pasted into the Gemini prompt box, ready to send" loading="lazy"><figcaption>From a personal account. Your school account may not show the Upgrade button.</figcaption></figure></li>
+        </ol>
+        <h4>Read it the way a parent would</h4>
+        <ul>
+          <li>Does it know your grade?</li>
+          <li>Does it know what your class actually did?</li>
+          <li>Is it the right length for your newsletter?</li>
+          <li>Would a busy parent read to the end?</li>
+        </ul>
+        <p>It's generic, because Gemini had to guess everything you didn't say. Keep this chat open. In two slides you'll compare it with a CRAFT prompt.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Start cold.</span>
+      <span class="slide-footer-page">10</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 1</span>
+    <h2>CRAFT: five things Gemini can't guess</h2>
+    <p class="lead">Your cold prompt left Gemini guessing. CRAFT fills in the five things it needs.</p>
+    <table>
+      <tbody>
+        <tr><td><strong>C</strong></td><td><strong>Context:</strong> who, what, and where</td></tr>
+        <tr><td><strong>R</strong></td><td><strong>Role:</strong> who Gemini should be</td></tr>
+        <tr><td><strong>A</strong></td><td><strong>Action:</strong> the job</td></tr>
+        <tr><td><strong>F</strong></td><td><strong>Format:</strong> shape and length</td></tr>
+        <tr><td><strong>T</strong></td><td><strong>Tone:</strong> how it should sound</td></tr>
+      </tbody>
+    </table>
+    <details class="how">
+      <summary>Tell me more <span class="hint">each letter in our newsletter prompt</span></summary>
+      <div class="how-body">
+        <p>Here's the cold prompt again, with each letter filled in. You'll paste all of it on the next slide.</p>
+        <table>
+          <thead><tr><th>Letter</th><th>In our prompt</th><th>What it adds</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Context</strong></td><td>My 3rd graders just finished a two-week unit on plant life cycles. They planted bean seeds in clear cups, watched them sprout, and drew each stage.</td><td>Gemini knows your class and what they did.</td></tr>
+            <tr><td><strong>Role</strong></td><td>Act as an elementary teacher writing to families.</td><td>The voice of a teacher writing home.</td></tr>
+            <tr><td><strong>Action</strong></td><td>Write a short blurb for our class newsletter about what we learned.</td><td>The job, so it stops guessing.</td></tr>
+            <tr><td><strong>Format</strong></td><td>About 120 words. One paragraph, then one question families can ask their child at dinner.</td><td>A shape and length that fit your newsletter.</td></tr>
+            <tr><td><strong>Tone</strong></td><td>Warm and plain. No education jargon.</td><td>How it sounds to a busy parent.</td></tr>
+          </tbody>
+        </table>
+        <p>You won't need all five every time. Two or three usually do it. Google's own tips for writing Gem instructions cover the same ground with four parts: persona, task, context, and format. CRAFT adds tone, because tone is what families notice first.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">CRAFT.</span>
+      <span class="slide-footer-page">11</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 1</span>
+    <h2>Now the full CRAFT prompt</h2>
+    <p class="lead">Start a new chat, paste this, and compare it with your cold result.</p>
+    <div class="prompt-block"><span class="label">The full CRAFT prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+Context: My 3rd graders just finished a two-week unit on plant life cycles. They planted bean seeds in clear cups, watched them sprout, and drew each stage.
+Role: Act as an elementary teacher writing to families.
+Action: Write a short blurb for our class newsletter about what we learned.
+Format: About 120 words. One paragraph, then one question families can ask their child at dinner.
+Tone: Warm and plain. No education jargon.
+</div>
+    <details class="how">
+      <summary>Check it, then make it better <span class="hint">compare, then talk back</span></summary>
+      <div class="how-body">
+        <p>Put it beside your cold result from slide 10. Which one would you send? Most people notice the details, the length, the dinner question, and the warmth. That's the whole lesson. Same Gemini the whole time. The difference is what you told it.</p>
+        <p>Then talk back. It's a first draft. Ask for changes the way you'd ask a colleague.</p>
+        <div class="prompt-block"><span class="label">Follow-up prompt</span>
+Make it shorter, and add one sentence inviting families to send in a photo of any plant growing at home. Just the plant, no faces needed.
+</div>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">CRAFT. The full prompt.</span>
+      <span class="slide-footer-page">12</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 1</span>
+    <h2>Pick two or three quick wins</h2>
+    <p class="lead">Select one to jump to it. The rest are in your workbook.</p>
+    <ul class="jump-list">
+<li><a href="#14"><span class="jump-num">14</span> One passage, three reading levels</a></li>
+<li><a href="#15"><span class="jump-num">15</span> Standards into "I can" statements</a></li>
+<li><a href="#16"><span class="jump-num">16</span> Exit ticket questions</a></li>
+<li><a href="#17"><span class="jump-num">17</span> A sub plan</a></li>
+<li><a href="#18"><span class="jump-num">18</span> A hands-on science activity</a></li>
+<li><a href="#19"><span class="jump-num">19</span> Directions for English learners</a></li>
+<li><a href="#20"><span class="jump-num">20</span> A kid-friendly vocabulary list</a></li>
+</ul>
+    <details class="how">
+      <summary>Tell me more <span class="hint">what each one has</span></summary>
+      <div class="how-body">
+        <p>Each quick win takes about five minutes. It has a starter prompt, what good output looks like, and one follow-up to make it better.</p>
+        <p>At the end of each one, <strong>Try another one</strong> takes you to a different quick win, and <strong>Done</strong> takes you to slide 21.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Quick wins menu.</span>
+      <span class="slide-footer-page">13</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Quick win 1</span>
+    <h2>One passage, three reading levels</h2>
+    <p class="lead">Copy this prompt into a new Gemini chat and press Enter.</p>
+    <div class="prompt-block clip"><span class="label">Starter prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+Context: I teach 3rd grade. Below is a reading passage from our plant life cycle unit.
+Role: Act as a reading specialist.
+Action: Rewrite the passage at three reading levels: easier, on grade level, and harder. Keep every fact in all three versions, and don't add new ones. Keep these words: germinate, seedling, pollen, pollination, fruit, life cycle.
+Format: Label them Version A, Version B, and Version C, and tell me which is which at the end. Make the easier version easier with shorter sentences and simpler words, not by leaving facts out. It can be shorter than the others. Bold the vocabulary words.
+Tone: Clear and friendly, for 8-year-olds.
+
+Passage:
+From Seed to Seed: The Life of a Bean Plant
+
+A bean plant starts as a small, hard seed. It may not look alive, but it is. Inside the seed is a tiny baby plant. The seed also holds food for the baby plant. A tough seed coat covers the outside and keeps it safe.
+
+A seed can wait a long time. To start growing, it needs water, air, and warmth. When a bean is planted in damp, warm soil, it soaks up water and swells. Then the seed coat splits open. The seed begins to germinate. That means it starts to grow.
+
+First, a root pokes out of the seed and grows down into the soil. Roots hold the plant in place. They also soak up water. Next, a stem pushes up through the soil. Soon a little green plant pops out of the ground. Now it is called a seedling.
+
+By now, the seedling has used up its stored food. Its green leaves make new food from sunlight, air, and water. The stem grows taller. It carries water from the roots up to the leaves. In a few weeks, the seedling grows into an adult plant.
+
+An adult bean plant grows flowers. Each flower makes a yellow dust called pollen. Moving pollen so a flower can make seeds is called pollination. A bean flower can pollinate itself. Bees help too. They visit flowers to drink sweet nectar, and pollen sticks to their fuzzy bodies. When a bee flies to the next flower, some pollen rubs off.
+
+After a flower is pollinated, it changes. The petals dry up and fall off. A long green pod grows in its place. The pod is the bean plant's fruit. A fruit is the part of a plant that holds its seeds. Inside the pod, new seeds grow bigger every day.
+
+At the end of summer, the plant turns brown and dies. The pods dry out and split open. Some seeds fall to the ground. A gardener might save others in a jar. Next spring, one of those seeds can be planted. It will germinate, grow, flower, and make new seeds. This pattern is called a life cycle. It goes from seed to seed, again and again.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs the whole prompt, passage included.</p>
+    <details class="how">
+      <summary>Check it, then make it better <span class="hint">what good looks like, one follow-up</span></summary>
+      <div class="how-body">
+        <h4>What good looks like</h4>
+        <ul>
+          <li>The facts match the original in all three versions. Nothing new was added.</li>
+          <li>The easier version uses shorter sentences, not babyish ones.</li>
+          <li>The harder version uses longer sentences and linking words like because and so. The facts stay the same.</li>
+          <li>The labels are Version A, B, and C, so students never see a level label.</li>
+        </ul>
+        <h4>Make it better</h4>
+        <div class="prompt-block"><span class="label">Follow-up prompt</span>
+Add three comprehension questions after each version, matched to its reading level.
+</div>
+        <div class="callout note">
+          <p><strong class="tag">Using your own passage?</strong> After you paste the prompt into Gemini, delete our passage and paste yours in its place. Change the grade (3rd), the age (8-year-olds), and the list of words to keep so they match. Your own writing, or a short excerpt, works best.</p>
+        </div>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different quick win</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#15"><span class="jump-num">15</span> Standards into "I can" statements</a></li>
+<li><a href="#16"><span class="jump-num">16</span> Exit ticket questions</a></li>
+<li><a href="#17"><span class="jump-num">17</span> A sub plan</a></li>
+<li><a href="#18"><span class="jump-num">18</span> A hands-on science activity</a></li>
+<li><a href="#19"><span class="jump-num">19</span> Directions for English learners</a></li>
+<li><a href="#20"><span class="jump-num">20</span> A kid-friendly vocabulary list</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#21">Done <span class="hint">Go to slide 21, the 30-second check</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Quick win. Three levels.</span>
+      <span class="slide-footer-page">14</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Quick win 2</span>
+    <h2>Standards into "I can" statements</h2>
+    <p class="lead">Copy this prompt into a new Gemini chat and press Enter.</p>
+    <div class="prompt-block clip"><span class="label">Starter prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+Role: Act as an experienced 3rd grade teacher.
+Action: Turn each standard below into one "I can" statement a 3rd grader could read and understand.
+Format: A numbered list. Under 12 words each. Start every statement with "I can." After each one, add a short line that begins "I'll know I've got it when..."
+Tone: Simple, concrete, and positive.
+
+Standards:
+SCI.3.LS.1: Draw and explain a labeled model showing that a flowering plant starts as a seed, grows, makes flowers and seeds, and dies, and that new seeds start the cycle again.
+SCI.3.LS.2: Plan and carry out a fair test to find out what a seed needs to begin growing and what a young plant needs to keep growing. Change only one thing at a time.
+SCI.3.LS.3: Describe how roots, stems, leaves, flowers, and fruits help a plant survive and make new plants, including how animals such as bees carry pollen between flowers.
+SCI.3.PR.1: Make careful observations over several days. Record them with labeled drawings, words, and simple measurements, and use the records to answer a question.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs the whole prompt, standards included.</p>
+    <details class="how">
+      <summary>Check it, then make it better <span class="hint">what good looks like, one follow-up</span></summary>
+      <div class="how-body">
+        <h4>What good looks like</h4>
+        <ul>
+          <li>Every statement uses words a third grader knows.</li>
+          <li>Each one is something a kid could show you, not just "understand."</li>
+          <li>The meaning still matches the standard.</li>
+        </ul>
+        <h4>Make it better</h4>
+        <div class="prompt-block"><span class="label">Follow-up prompt</span>
+Make a version for students who are still learning to read: five words or fewer, plus a simple picture I could draw next to each one.
+</div>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different quick win</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#14"><span class="jump-num">14</span> One passage, three reading levels</a></li>
+<li><a href="#16"><span class="jump-num">16</span> Exit ticket questions</a></li>
+<li><a href="#17"><span class="jump-num">17</span> A sub plan</a></li>
+<li><a href="#18"><span class="jump-num">18</span> A hands-on science activity</a></li>
+<li><a href="#19"><span class="jump-num">19</span> Directions for English learners</a></li>
+<li><a href="#20"><span class="jump-num">20</span> A kid-friendly vocabulary list</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#21">Done <span class="hint">Go to slide 21, the 30-second check</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Quick win. I can statements.</span>
+      <span class="slide-footer-page">15</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Quick win 3</span>
+    <h2>Exit ticket questions</h2>
+    <p class="lead">Copy this prompt into a new Gemini chat and press Enter.</p>
+    <div class="prompt-block"><span class="label">Starter prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+Context: Today my 3rd graders learned what a seed needs to sprout: water, warmth, and air. We put bean seeds in wet paper towels to watch it happen.
+Role: Act as a 3rd grade teacher.
+Action: Write 4 exit ticket questions to check today's learning.
+Format: 2 multiple choice, 1 true or false with a "why," and 1 draw-and-label question. Put an answer key at the end.
+Tone: Short and kid-friendly.
+</div>
+    <details class="how">
+      <summary>Check it, then make it better <span class="hint">what good looks like, one follow-up</span></summary>
+      <div class="how-body">
+        <h4>What good looks like</h4>
+        <ul>
+          <li>Every question checks today's goal, not something else.</li>
+          <li>The wrong answers in the multiple choice are believable, not silly.</li>
+          <li>You could check a whole class set in a few minutes.</li>
+          <li>The key doesn't say a seed needs light or soil to sprout. That's a common mistake.</li>
+        </ul>
+        <h4>Make it better</h4>
+        <div class="prompt-block"><span class="label">Follow-up prompt</span>
+Make a second version of the same questions for students who need more support: fewer words, a word bank, and picture choices for the multiple choice.
+</div>
+        <div class="callout">
+          <p><strong class="tag">Check the key</strong> Answer keys written by AI are wrong more often than you'd think. Take it yourself before your students do.</p>
+        </div>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different quick win</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#14"><span class="jump-num">14</span> One passage, three reading levels</a></li>
+<li><a href="#15"><span class="jump-num">15</span> Standards into "I can" statements</a></li>
+<li><a href="#17"><span class="jump-num">17</span> A sub plan</a></li>
+<li><a href="#18"><span class="jump-num">18</span> A hands-on science activity</a></li>
+<li><a href="#19"><span class="jump-num">19</span> Directions for English learners</a></li>
+<li><a href="#20"><span class="jump-num">20</span> A kid-friendly vocabulary list</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#21">Done <span class="hint">Go to slide 21, the 30-second check</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Quick win. Exit tickets.</span>
+      <span class="slide-footer-page">16</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Quick win 4</span>
+    <h2>A sub plan</h2>
+    <p class="lead">Copy this prompt into a new Gemini chat and press Enter.</p>
+    <div class="prompt-block clip"><span class="label">Starter prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+Context: I teach 3rd grade. Tomorrow a substitute will cover my class. We're in week two of a plant life cycle unit. Our day: morning meeting, reading block, math, lunch and recess, science, specials, and pack-up.
+Role: Act as an experienced teacher writing for a substitute who has never met my class.
+Action: Draft a full-day sub plan.
+Format: A schedule with [time] blanks I can fill in, then short numbered directions for each block. Include a science activity that needs no special supplies, something for early finishers, a section called "Things that will help your day," and a spot for emergency procedures and where health notes are kept, marked [add by hand].
+Tone: Clear, calm, and friendly.
+Use [student] in place of any names. Don't include any student information.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs the whole prompt. Leave the [brackets] as they are; they mark the spots you fill in by hand later.</p>
+    <div class="callout danger">
+      <p><strong class="tag">Keep names out, even here</strong> Names, medical details, and behavior notes go on the printed copy, by hand.</p>
+    </div>
+    <details class="how">
+      <summary>Check it, then make it better <span class="hint">what good looks like, one follow-up</span></summary>
+      <div class="how-body">
+        <h4>What good looks like</h4>
+        <ul>
+          <li>A sub could follow it without asking anyone.</li>
+          <li>Directions are numbered steps, not paragraphs.</li>
+          <li>The science activity needs no special supplies.</li>
+        </ul>
+        <h4>Make it better</h4>
+        <div class="prompt-block"><span class="label">Follow-up prompt</span>
+Now write a one-page emergency sub plan I can keep in my desk that works on any day of the year.
+</div>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different quick win</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#14"><span class="jump-num">14</span> One passage, three reading levels</a></li>
+<li><a href="#15"><span class="jump-num">15</span> Standards into "I can" statements</a></li>
+<li><a href="#16"><span class="jump-num">16</span> Exit ticket questions</a></li>
+<li><a href="#18"><span class="jump-num">18</span> A hands-on science activity</a></li>
+<li><a href="#19"><span class="jump-num">19</span> Directions for English learners</a></li>
+<li><a href="#20"><span class="jump-num">20</span> A kid-friendly vocabulary list</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#21">Done <span class="hint">Go to slide 21, the 30-second check</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Quick win. Sub plan.</span>
+      <span class="slide-footer-page">17</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Quick win 5</span>
+    <h2>A hands-on science activity</h2>
+    <p class="lead">Copy this prompt into a new Gemini chat and press Enter.</p>
+    <div class="prompt-block"><span class="label">Starter prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+Context: My 3rd graders are studying plant life cycles. I have 45 minutes, a regular classroom, and about $10 for supplies.
+Role: Act as an elementary science teacher who loves hands-on learning.
+Action: Suggest 3 hands-on activities that help students understand how a plant grows from seed to seed.
+Format: For each one: a name, a materials list, 5 or fewer steps, and one question to ask while students work.
+Safety: Right for 8-year-olds. No heat, no sharp tools, no nuts or common food allergens, and nothing small enough to swallow. Add a handwashing step after touching soil or seeds.
+Tone: Practical and upbeat.
+</div>
+    <details class="how">
+      <summary>Check it, then make it better <span class="hint">what good looks like, one follow-up</span></summary>
+      <div class="how-body">
+        <h4>What good looks like</h4>
+        <ul>
+          <li>Materials you can get this week.</li>
+          <li>Steps a third grader can follow.</li>
+          <li>Safe: no heat, no sharp tools, nothing you'd need a permission slip for.</li>
+          <li>The science is right. Check it.</li>
+        </ul>
+        <h4>Make it better</h4>
+        <div class="prompt-block"><span class="label">Follow-up prompt</span>
+Pick the best one for a class of 26 and write it as a station card students can follow on their own. Put one safety rule at the top.
+</div>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different quick win</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#14"><span class="jump-num">14</span> One passage, three reading levels</a></li>
+<li><a href="#15"><span class="jump-num">15</span> Standards into "I can" statements</a></li>
+<li><a href="#16"><span class="jump-num">16</span> Exit ticket questions</a></li>
+<li><a href="#17"><span class="jump-num">17</span> A sub plan</a></li>
+<li><a href="#19"><span class="jump-num">19</span> Directions for English learners</a></li>
+<li><a href="#20"><span class="jump-num">20</span> A kid-friendly vocabulary list</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#21">Done <span class="hint">Go to slide 21, the 30-second check</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Quick win. Hands-on science.</span>
+      <span class="slide-footer-page">18</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Quick win 6</span>
+    <h2>Directions for English learners</h2>
+    <p class="lead">Copy this prompt into a new Gemini chat and press Enter.</p>
+    <div class="prompt-block clip"><span class="label">Starter prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+Context: I teach 3rd grade. Several of my students are English learners at a beginning to intermediate level.
+Role: Act as an ESL teacher.
+Action: Rewrite the directions below so they are easier to follow.
+Format: Numbered steps, one action per step, short sentences, and simple words. Bold the main action word in each step. Then list 3 words I should teach before students start.
+Tone: Clear and encouraging.
+
+Directions:
+Before you begin, make sure you have carefully read through the entire passage about the bean plant. Afterward, working with your partner, discuss which stage of the life cycle you found most surprising, and then each of you should independently record your thinking in your science journal using at least two complete sentences.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs the whole prompt, directions included.</p>
+    <details class="how">
+      <summary>Check it, then make it better <span class="hint">what good looks like, one follow-up</span></summary>
+      <div class="how-body">
+        <h4>What good looks like</h4>
+        <ul>
+          <li>One action per step.</li>
+          <li>Words a beginning English learner knows, or can learn quickly.</li>
+          <li>Nothing important dropped: the partner talk, the journal, and the two sentences are all still there.</li>
+        </ul>
+        <h4>Make it better</h4>
+        <div class="prompt-block"><span class="label">Follow-up prompt</span>
+Show the new steps side by side in English and Spanish.
+</div>
+        <p>Use your students' home language in place of Spanish.</p>
+        <div class="callout">
+          <p><strong class="tag">Translation is a draft too</strong> Ask a fluent colleague or your family liaison to check anything that goes home.</p>
+        </div>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different quick win</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#14"><span class="jump-num">14</span> One passage, three reading levels</a></li>
+<li><a href="#15"><span class="jump-num">15</span> Standards into "I can" statements</a></li>
+<li><a href="#16"><span class="jump-num">16</span> Exit ticket questions</a></li>
+<li><a href="#17"><span class="jump-num">17</span> A sub plan</a></li>
+<li><a href="#18"><span class="jump-num">18</span> A hands-on science activity</a></li>
+<li><a href="#20"><span class="jump-num">20</span> A kid-friendly vocabulary list</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#21">Done <span class="hint">Go to slide 21, the 30-second check</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Quick win. Clear directions.</span>
+      <span class="slide-footer-page">19</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Quick win 7</span>
+    <h2>A kid-friendly vocabulary list</h2>
+    <p class="lead">Copy this prompt into a new Gemini chat and press Enter.</p>
+    <div class="prompt-block"><span class="label">Starter prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+Context: My 3rd graders are about to read a passage about the life cycle of a bean plant.
+Role: Act as a 3rd grade teacher.
+Action: Make a vocabulary list for these words: seed, germinate, seedling, roots, pollen, pollination, fruit, life cycle.
+Format: A table with three columns: the word, a kid-friendly definition under 12 words, and an example sentence about our bean plants.
+Tone: Simple and concrete.
+</div>
+    <details class="how">
+      <summary>Check it, then make it better <span class="hint">what good looks like, one follow-up</span></summary>
+      <div class="how-body">
+        <h4>What good looks like</h4>
+        <ul>
+          <li>Each definition uses easier words than the word it defines.</li>
+          <li>The example sentences are about the unit, not random.</li>
+          <li>Nothing is wrong. Check pollination especially.</li>
+        </ul>
+        <h4>Make it better</h4>
+        <div class="prompt-block"><span class="label">Follow-up prompt</span>
+Turn this into a matching game: the words in one column, the definitions scrambled in another, and an answer key at the end.
+</div>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different quick win</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#14"><span class="jump-num">14</span> One passage, three reading levels</a></li>
+<li><a href="#15"><span class="jump-num">15</span> Standards into "I can" statements</a></li>
+<li><a href="#16"><span class="jump-num">16</span> Exit ticket questions</a></li>
+<li><a href="#17"><span class="jump-num">17</span> A sub plan</a></li>
+<li><a href="#18"><span class="jump-num">18</span> A hands-on science activity</a></li>
+<li><a href="#19"><span class="jump-num">19</span> Directions for English learners</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#21">Done <span class="hint">Go to slide 21, the 30-second check</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Quick win. Vocabulary.</span>
+      <span class="slide-footer-page">20</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 1</span>
+    <h2>The 30-second check</h2>
+    <p class="lead">Before anything reaches students or families, give it thirty seconds.</p>
+    <ol class="big-list">
+      <li><strong>Accurate?</strong></li>
+      <li><strong>Right for the grade?</strong></li>
+      <li><strong>Fair?</strong></li>
+      <li><strong>On target?</strong></li>
+    </ol>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">the four checks, then save it to Google Docs</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Pick one quick win you made and run the four checks.
+            <ul>
+              <li><strong>Accurate:</strong> are the facts right? Check anything you'd have to look up.</li>
+              <li><strong>Right for the grade:</strong> words, sentence length, and expectations your students can handle.</li>
+              <li><strong>Fair:</strong> would every student see themselves in it? Watch the names, examples, holidays, and families it assumes.</li>
+              <li><strong>On target:</strong> does it serve today's lesson goal, or did it wander?</li>
+            </ul></li>
+          <li>Fix one thing, by hand or with a follow-up prompt.</li>
+          <li>Keep what's good. Under the response, select the three dots (<strong>&middot;&middot;&middot;</strong>) at the end of the row of buttons, then <strong>Export to Docs</strong>. Now it's a Google Doc you can edit, print, or share.
+            <figure class="shot"><img loading="lazy" src="images/slide21-step3_export-to-docs.png" alt="The menu that opens from the three dots under a Gemini response, with the three dots circled and Export to Docs in the menu" loading="lazy"><figcaption>Convert to PDF, at the bottom of this menu, comes from a browser add-on. You may not see it.</figcaption></figure></li>
+        </ol>
+      </div>
+    </details>
+    <div class="callout safe">
+      <p><strong class="tag">Your judgment stays in charge</strong> Gemini drafts. You decide.</p>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">The 30-second check.</span>
+      <span class="slide-footer-page">21</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 2</span>
+    <h2>Gems: set it up once, use it every week</h2>
+    <p class="lead">Use a Gem when you want Gemini to act a certain way, every time, without retyping your instructions. You'll build two and share one.</p>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Module 2. Gems.</span>
+      <span class="slide-footer-page">22</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 2</span>
+    <h2>Chat or a Gem?</h2>
+    <p class="lead">If you'll do it every week, the same way, make it a Gem. If it's a one-time question, just ask.</p>
+    <details class="how">
+      <summary>Tell me more <span class="hint">how to decide</span></summary>
+      <div class="how-body">
+        <table>
+          <thead><tr><th>Use a regular chat when...</th><th>Use a Gem when...</th></tr></thead>
+          <tbody>
+            <tr><td>It's a one-time task.</td><td>You do this task every week.</td></tr>
+            <tr><td>You're exploring or brainstorming.</td><td>You want the same rules every time.</td></tr>
+            <tr><td>Your instructions fit in a sentence or two.</td><td>Your instructions are long enough that retyping them is a chore.</td></tr>
+          </tbody>
+        </table>
+        <p>A parent note is a good example. You'll write dozens this year, and every one should be warm, clear, short, and free of jargon. That's a Gem.</p>
+        <p>A Gem remembers its instructions and any files you give it. Every chat with a Gem starts from those same instructions.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Chat or Gem.</span>
+      <span class="slide-footer-page">23</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 2. Build together</span>
+    <h2>Build a Gem, part 1: open the editor</h2>
+    <p class="lead">Open <a href="https://gemini.google.com/gems/create" target="_blank" rel="noopener"><strong>gemini.google.com/gems/create</strong></a> and name your Gem <strong>Parent Note Drafter</strong>.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">3 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Select <a href="https://gemini.google.com/gems/create" target="_blank" rel="noopener"><strong>gemini.google.com/gems/create</strong></a>. The Gem editor opens in a new tab.
+            <figure class="shot"><img loading="lazy" src="images/slide24-step1_gem-editor.png" alt="The empty Gem editor at gemini.google.com/gems/create" loading="lazy"><figcaption>From a personal account. Your school account may not show the Upgrade button.</figcaption></figure></li>
+          <li>No luck with the link? In Gemini's menu on the left, select <strong>Gems</strong>. The Gem manager page opens. Scroll down to <strong>My Gems</strong> and select <strong>+ New Gem</strong> on the right. Your menu may say <strong>Explore Gems</strong> instead of Gems.
+            <figure class="shot"><img loading="lazy" src="images/slide24-step2_gems-menu.png" alt="The Gemini menu with Gems selected, and the Gem manager page" loading="lazy"><figcaption>From a personal account. Your school account may not show the Upgrade button.</figcaption></figure></li>
+          <li>In <strong>Name</strong>, type <strong>Parent Note Drafter</strong>. In <strong>Description</strong>, type <strong>Warm, clear notes to families. No jargon. No student names.</strong>
+            <figure class="shot"><img loading="lazy" src="images/slide24-step3_name-description.png" alt="The Name and Description fields filled in for the Parent Note Drafter" loading="lazy"><figcaption>From a personal account. Your school account may not show the Upgrade button.</figcaption></figure></li>
+        </ol>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Build a Gem, part 1.</span>
+      <span class="slide-footer-page">24</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 2. Build together</span>
+    <h2>Part 2: the instructions</h2>
+    <p class="lead">Copy these and paste them into the <strong>Instructions</strong> box.</p>
+    <div class="prompt-block clip"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You are a parent communication assistant for an elementary or middle school teacher.
+
+Your job: turn the teacher's rough notes into a clear, warm message for families.
+
+Every message you write:
+- Is warm, respectful, and plain. A busy parent should be able to read it in under a minute.
+- Uses no education jargon. If a school term is needed, explain it in a few words.
+- Leads with the most important information: what is happening, when, and what the family needs to do.
+- Stays short: 150 words or fewer, unless the teacher asks for more.
+- Ends with how to reach the teacher, using a placeholder like [teacher email].
+- Treats families as partners. Never scold or lecture.
+
+Privacy rules you always follow:
+- Never include student names, a child's grades or test scores, health information, IEP or 504 details, or behavior details. Use [student] or [your child] as placeholders.
+- If the teacher's notes include any of that, leave it out. After the message, add a short "Note to you" reminding the teacher to keep personal details out of Gemini and add them by hand.
+
+If the notes mention one child or one family (a concern, a missing form, a reminder), keep the class message general. Then offer a separate short private note for that family, written as a kind invitation.
+
+If the teacher asks for a translation, write the English version first, then the translation, and remind the teacher to have a fluent speaker check it before sending.
+
+If something important is missing, like a date or time, ask one short question instead of guessing.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">2 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Find the <strong>Instructions</strong> box under Description and paste the instructions in.
+            <div class="prompt-block clip step-copy"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You are a parent communication assistant for an elementary or middle school teacher.
+
+Your job: turn the teacher's rough notes into a clear, warm message for families.
+
+Every message you write:
+- Is warm, respectful, and plain. A busy parent should be able to read it in under a minute.
+- Uses no education jargon. If a school term is needed, explain it in a few words.
+- Leads with the most important information: what is happening, when, and what the family needs to do.
+- Stays short: 150 words or fewer, unless the teacher asks for more.
+- Ends with how to reach the teacher, using a placeholder like [teacher email].
+- Treats families as partners. Never scold or lecture.
+
+Privacy rules you always follow:
+- Never include student names, a child's grades or test scores, health information, IEP or 504 details, or behavior details. Use [student] or [your child] as placeholders.
+- If the teacher's notes include any of that, leave it out. After the message, add a short "Note to you" reminding the teacher to keep personal details out of Gemini and add them by hand.
+
+If the notes mention one child or one family (a concern, a missing form, a reminder), keep the class message general. Then offer a separate short private note for that family, written as a kind invitation.
+
+If the teacher asks for a translation, write the English version first, then the translation, and remind the teacher to have a fluent speaker check it before sending.
+
+If something important is missing, like a date or time, ask one short question instead of guessing.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p>
+            <figure class="shot"><img loading="lazy" src="images/slide25-step1_instructions-box.png" alt="The Instructions box in the Gem editor with the Parent Note Drafter instructions pasted in" loading="lazy"><figcaption>From a personal account. Your school account may not show the Upgrade button.</figcaption></figure></li>
+          <li>Optional, for later: at the bottom left of the Instructions box, next to the undo and redo arrows, is a magic wand button. It rewrites your instructions for you. Read what it changes before you keep it. Today, keep ours as written.
+            <figure class="shot"><img loading="lazy" src="images/slide25-step2_rewrite-button.png" alt="The magic wand button at the bottom of the Instructions box" loading="lazy"></figure></li>
+        </ol>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Build a Gem, part 2.</span>
+      <span class="slide-footer-page">25</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 2. Build together</span>
+    <h2>Part 3: settings, then Save</h2>
+    <p class="lead">Leave <strong>Default tool</strong> on <strong>No default tool</strong>, skip <strong>Knowledge</strong> for now, and select <strong>Save</strong>.</p>
+    <div class="callout danger">
+      <p><strong class="tag">Name files like someone will read the name</strong> If you share a Gem, people can see the titles of its attached files.</p>
+    </div>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">3 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Find <strong>Default tool</strong> and leave it on <strong>No default tool</strong>. You don't need to open it. A default tool is a Gemini tool the Gem starts with. For example, <strong>Canvas</strong> gives you a space to draft and edit longer documents, which is handy for lesson plans. A short note doesn't need it.
+            <figure class="shot"><img loading="lazy" src="images/slide26-step1_default-tool.png" alt="The Default tool setting in the Gem editor, showing No default tool" loading="lazy"></figure></li>
+          <li>Find <strong>Knowledge</strong>. Later, you can add files the Gem should use, like a newsletter template: select the plus sign (<strong>+</strong>) at the right end of the Knowledge box, then <strong>Upload files</strong> or <strong>Add from Drive</strong>. You can attach up to 10 files, and Drive files stay up to date when you edit them. Skip it for this Gem.
+            <figure class="shot"><img loading="lazy" src="images/slide26-step2_knowledge-add-files.png" alt="The Knowledge box in the Gem editor, with the plus sign's menu open: Add from Drive, Google Photos, and Gemini Notebook" loading="lazy"></figure></li>
+          <li>Select the blue <strong>Save</strong> button at the top right of the editor, next to the words <strong>Gem not saved</strong>. Your Gem has to be saved before you can test it on the next slide.
+            <figure class="shot"><img loading="lazy" src="images/slide26-step3_save-button.png" alt="The top right of the Gem editor: Gem not saved, and the blue Save button" loading="lazy"><figcaption>From a personal account. Your screen may not show Upgrade, or Convert chat to PDF, which comes from a browser add-on.</figcaption></figure></li>
+        </ol>
+        <p>If <strong>Add from Drive</strong> is ever missing, your district may have that connection turned off. Upload the file from your computer instead. If uploads are blocked too, skip Knowledge and paste the text into the chat when you use the Gem.</p>
+        <p>"Gr 3 Plants Unit Overview" is a fine file name. "Reading notes on [a student's name]" is not, and that file should never be attached to a Gem anyway.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Build a Gem, part 3.</span>
+      <span class="slide-footer-page">26</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 2. Build together</span>
+    <h2>Part 4: test it</h2>
+    <p class="lead">Paste this test note into the <strong>Preview</strong> panel and check the result.</p>
+    <div class="prompt-block"><span class="label">Test note &middot; paste into Preview</span>
+Field trip to the nature center moved from Thursday to Friday. Bus leaves at 9:15 and we're back by 2:30. Kids need a packed lunch and closed-toe shoes. Permission slips due Wednesday. Also, one family still hasn't sent their slip back and I want to nudge them.
+</div>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">3 steps, with a picture</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>In the <strong>Preview</strong> panel on the right, paste the test note into the <strong>Ask Gemini</strong> box at the bottom, and press Enter.
+            <div class="prompt-block step-copy"><span class="label">Test note &middot; paste into Preview</span>
+Field trip to the nature center moved from Thursday to Friday. Bus leaves at 9:15 and we're back by 2:30. Kids need a packed lunch and closed-toe shoes. Permission slips due Wednesday. Also, one family still hasn't sent their slip back and I want to nudge them.
+</div>
+            <figure class="shot"><img loading="lazy" src="images/slide27-step1_preview-panel.png" alt="The Preview panel, with the Ask Gemini box at the bottom and the Gem's reply above it" loading="lazy"></figure></li>
+          <li>Read the result. Does it lead with the date change? Is it under 150 words? Did it keep the whole-class message general, and offer a separate private note for the one family? If it asks you a question first, answer it.</li>
+          <li>Changed the instructions? Select <strong>Update</strong> at the top right to save the change. Once a Gem is saved, the Save button says Update.</li>
+        </ol>
+        <p>Your Gem now shows up in your Gems list in the menu (it may be called Gems, Explore Gems, or Gem manager). Open it anytime, paste your rough notes, and let it draft.</p>
+        <div class="callout safe">
+          <p><strong class="tag">Did it pass?</strong> The test note has a trap on purpose: a message about one family inside a note to everyone. A good Gem keeps the class note general. If yours didn't, add this line to the end of the Instructions, select Update, and test again: <strong>Never mention one child or one family in a message to the whole class.</strong> And remember: the Gem keeps names out of what it writes, but it can't take back what you typed. Keep names out of your notes too.</p>
+        </div>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Build a Gem, part 4.</span>
+      <span class="slide-footer-page">27</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 2. Build together</span>
+    <h2>Your second Gem: Lesson Plan Co-Planner</h2>
+    <p class="lead">Make a new Gem, paste these into <strong>Instructions</strong>, and select <strong>Save</strong>.</p>
+    <p>Everyone builds this one. In Module 3 you'll connect it to your unit notebook.</p>
+    <div class="prompt-block clip"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You are a lesson planning partner for a K-8 teacher.
+
+Before you draft, check that you know: the grade, the subject, the lesson goal, how long the lesson is, and anything important about the class, in general terms with no names (like mixed reading levels or English learners). If any of those is missing, ask for it in one short list. Don't guess.
+
+When you draft a lesson plan, use these sections:
+1. Lesson goal, written as an "I can" statement.
+2. Standards addressed. Use the ones the teacher gives you or the ones in your knowledge files. Never invent standard codes. If you don't have any, write [add standard].
+3. Materials.
+4. Opening (5 minutes or less): a hook that gets students curious.
+5. Teach: the key idea in plain steps.
+6. Practice: something students do, with partners or on their own.
+7. Check for understanding: a quick way to see who got it.
+8. Support and stretch: one idea for students who need more help, and one for students who are ready for more.
+9. Timing for each part.
+
+If the teacher attached a lesson plan template, use its sections instead of these.
+
+Keep plans realistic: materials a regular classroom has, and timing that adds up to the lesson length.
+If the lesson has a hands-on science activity, add one line on safety.
+If the teacher attached unit files, stay consistent with them and say which file you used.
+If the teacher includes a student's name or private details (health, IEP or 504, behavior, grades), don't repeat them. Use [student] instead, and remind the teacher to leave those details out next time.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">name, settings, and a first prompt</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Open a new Gem (slide 24 shows how). <strong>Name:</strong> Lesson Plan Co-Planner. <strong>Description:</strong> Drafts lesson plans in a consistent format. Asks before it guesses.</li>
+          <li>Paste the instructions into <strong>Instructions</strong>.
+            <div class="prompt-block clip step-copy"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You are a lesson planning partner for a K-8 teacher.
+
+Before you draft, check that you know: the grade, the subject, the lesson goal, how long the lesson is, and anything important about the class, in general terms with no names (like mixed reading levels or English learners). If any of those is missing, ask for it in one short list. Don't guess.
+
+When you draft a lesson plan, use these sections:
+1. Lesson goal, written as an "I can" statement.
+2. Standards addressed. Use the ones the teacher gives you or the ones in your knowledge files. Never invent standard codes. If you don't have any, write [add standard].
+3. Materials.
+4. Opening (5 minutes or less): a hook that gets students curious.
+5. Teach: the key idea in plain steps.
+6. Practice: something students do, with partners or on their own.
+7. Check for understanding: a quick way to see who got it.
+8. Support and stretch: one idea for students who need more help, and one for students who are ready for more.
+9. Timing for each part.
+
+If the teacher attached a lesson plan template, use its sections instead of these.
+
+Keep plans realistic: materials a regular classroom has, and timing that adds up to the lesson length.
+If the lesson has a hands-on science activity, add one line on safety.
+If the teacher attached unit files, stay consistent with them and say which file you used.
+If the teacher includes a student's name or private details (health, IEP or 504, behavior, grades), don't repeat them. Use [student] instead, and remind the teacher to leave those details out next time.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p></li>
+          <li><strong>Default tool:</strong> Canvas, so you can edit the plan like a document (not in the list? Pick No default tool). <strong>Knowledge:</strong> skip it today. In Module 3 you'll give it your whole unit notebook instead. Later, you can add your school's lesson plan template here.</li>
+          <li>Select <strong>Save</strong>, then try this first prompt:
+            <div class="prompt-block"><span class="label">Sample first prompt</span>
+Plan a 45-minute 3rd grade science lesson on what a seed needs to start growing. I have 24 students, and several are English learners.
+</div></li>
+        </ol>
+      </div>
+    </details>
+    <div class="next-step">
+      <p>Have time for one more? Pick from the Gem library on <a href="#29">slide 29</a>.</p>
+      <a class="done-btn" href="#36">Done <span class="hint">Go to slide 36, sharing a Gem</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Your second Gem.</span>
+      <span class="slide-footer-page">28</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 2</span>
+    <h2>More Gems, if you have time</h2>
+    <p class="lead">Done early? Pick one more Gem and build it the same way. The rest are in your workbook.</p>
+    <ul class="jump-list">
+<li><a href="#30"><span class="jump-num">30</span> Differentiation Helper</a></li>
+<li><a href="#31"><span class="jump-num">31</span> Rubric Builder</a></li>
+<li><a href="#32"><span class="jump-num">32</span> Read-Aloud Discussion Questions</a></li>
+<li><a href="#33"><span class="jump-num">33</span> Accommodation Idea Brainstormer</a></li>
+<li><a href="#34"><span class="jump-num">34</span> Sub Plan Builder</a></li>
+<li><a href="#35"><span class="jump-num">35</span> Classroom Management Script Helper</a></li>
+</ul>
+    <details class="how">
+      <summary>Tell me more <span class="hint">Canvas, and moving between Gems</span></summary>
+      <div class="how-body">
+        <p>Some Gems use <strong>Canvas</strong> as their default tool. Don't see Canvas in the list? Choose <strong>No default tool</strong>. When you want Canvas in a chat, select the plus sign (<strong>+</strong>) in the box where you type, then <strong>Canvas</strong>.</p>
+        <p>At the end of each Gem, <strong>Try another one</strong> takes you to a different Gem, and <strong>Done</strong> takes you to slide 36, sharing a Gem.</p>
+        <p>All six are in your workbook on the last slide, so you can build the rest later.</p>
+      </div>
+    </details>
+    <div class="next-step">
+      <a class="done-btn" href="#36">Skip for now <span class="hint">Go to slide 36, sharing a Gem</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Gem library.</span>
+      <span class="slide-footer-page">29</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Gem library</span>
+    <h2>Differentiation Helper</h2>
+    <p class="lead">Make a new Gem, paste these into <strong>Instructions</strong>, and select <strong>Save</strong>.</p>
+    <div class="prompt-block clip"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You help a K-8 teacher differentiate classroom tasks.
+
+When the teacher gives you a task, reading, or assignment, create three versions:
+- More support: the same goal with scaffolds, such as sentence starters, a word bank, fewer steps, a worked example, or a picture described in [brackets].
+- On level: the task as written, tightened for clarity.
+- More challenge: the same goal with more depth, such as a why question, a comparison, or a real-world connection. More challenge means deeper thinking, not more work.
+
+Rules:
+- All three versions keep the same learning goal and the same core content, so the whole class can discuss it together afterward.
+- Put only Version A, Version B, or Version C at the top of each version, so students never see a level. Never use labels like "low" or "high." Tell the teacher which is which in a note at the end.
+- If the task is about a text you haven't seen, don't invent quotes or plot details. Use [quote from the text], or ask the teacher to paste the text.
+- Keep each version at a reading level that fits the grade the teacher names. If no grade is given, ask.
+- End with one sentence on how to group or rotate students without singling anyone out.
+- If the teacher includes a student's name or private details (health, IEP or 504, behavior, grades), don't repeat them. Use [student] instead, and remind the teacher to leave those details out next time.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">name, settings, and a first prompt</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Open a new Gem. <strong>Name:</strong> Differentiation Helper. <strong>Description:</strong> Three versions of any task, same goal, no labels that sort kids.</li>
+          <li>Paste the instructions into <strong>Instructions</strong>.
+            <div class="prompt-block clip step-copy"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You help a K-8 teacher differentiate classroom tasks.
+
+When the teacher gives you a task, reading, or assignment, create three versions:
+- More support: the same goal with scaffolds, such as sentence starters, a word bank, fewer steps, a worked example, or a picture described in [brackets].
+- On level: the task as written, tightened for clarity.
+- More challenge: the same goal with more depth, such as a why question, a comparison, or a real-world connection. More challenge means deeper thinking, not more work.
+
+Rules:
+- All three versions keep the same learning goal and the same core content, so the whole class can discuss it together afterward.
+- Put only Version A, Version B, or Version C at the top of each version, so students never see a level. Never use labels like "low" or "high." Tell the teacher which is which in a note at the end.
+- If the task is about a text you haven't seen, don't invent quotes or plot details. Use [quote from the text], or ask the teacher to paste the text.
+- Keep each version at a reading level that fits the grade the teacher names. If no grade is given, ask.
+- End with one sentence on how to group or rotate students without singling anyone out.
+- If the teacher includes a student's name or private details (health, IEP or 504, behavior, grades), don't repeat them. Use [student] instead, and remind the teacher to leave those details out next time.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p></li>
+          <li><strong>Default tool:</strong> No default tool. <strong>Knowledge:</strong> none needed; paste the task into the chat.</li>
+          <li>Select <strong>Save</strong>, then try this first prompt:
+            <div class="prompt-block"><span class="label">Sample first prompt</span>
+Differentiate this 6th grade task: Read "The Seat by the Window" and write a paragraph explaining how Mara's point of view shapes what we believe about Theo. Use two quotes from the story as evidence.
+</div></li>
+        </ol>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different Gem</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#31"><span class="jump-num">31</span> Rubric Builder</a></li>
+<li><a href="#32"><span class="jump-num">32</span> Read-Aloud Discussion Questions</a></li>
+<li><a href="#33"><span class="jump-num">33</span> Accommodation Idea Brainstormer</a></li>
+<li><a href="#34"><span class="jump-num">34</span> Sub Plan Builder</a></li>
+<li><a href="#35"><span class="jump-num">35</span> Classroom Management Script Helper</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#36">Done <span class="hint">Go to slide 36, sharing a Gem</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Gem. Differentiation Helper.</span>
+      <span class="slide-footer-page">30</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Gem library</span>
+    <h2>Rubric Builder</h2>
+    <p class="lead">Make a new Gem, paste these into <strong>Instructions</strong>, and select <strong>Save</strong>.</p>
+    <div class="prompt-block clip"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You build rubrics for K-8 teachers.
+
+Before you build, make sure you know the grade, the assignment, and what matters most. If the teacher hasn't said, ask up to three short questions.
+
+Every rubric you make:
+- Has 3 to 5 criteria, each tied to what the assignment is meant to show.
+- Uses 4 levels: Beginning, Developing, Proficient, and Advanced, unless the teacher asks for a different scale.
+- Describes what each level looks like in observable terms. Avoid vague words like "good" or "excellent" unless you say what makes it good.
+- Comes as a table the teacher can paste into a document.
+
+After the rubric, add a student-friendly version: the same criteria written as "I can" statements, in words a student in that grade can read.
+
+Use the assignment directions and standards in your knowledge files when they're there.
+Score the work, not the student: no criteria about effort, attitude, or behavior unless the teacher asks for them.
+If the teacher includes a student's name or private details (health, IEP or 504, behavior, grades), don't repeat them. Use [student] instead, and remind the teacher to leave those details out next time.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">name, settings, and a first prompt</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Open a new Gem. <strong>Name:</strong> Rubric Builder. <strong>Description:</strong> Four-level rubrics in plain language, with a student version.</li>
+          <li>Paste the instructions into <strong>Instructions</strong>.
+            <div class="prompt-block clip step-copy"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You build rubrics for K-8 teachers.
+
+Before you build, make sure you know the grade, the assignment, and what matters most. If the teacher hasn't said, ask up to three short questions.
+
+Every rubric you make:
+- Has 3 to 5 criteria, each tied to what the assignment is meant to show.
+- Uses 4 levels: Beginning, Developing, Proficient, and Advanced, unless the teacher asks for a different scale.
+- Describes what each level looks like in observable terms. Avoid vague words like "good" or "excellent" unless you say what makes it good.
+- Comes as a table the teacher can paste into a document.
+
+After the rubric, add a student-friendly version: the same criteria written as "I can" statements, in words a student in that grade can read.
+
+Use the assignment directions and standards in your knowledge files when they're there.
+Score the work, not the student: no criteria about effort, attitude, or behavior unless the teacher asks for them.
+If the teacher includes a student's name or private details (health, IEP or 504, behavior, grades), don't repeat them. Use [student] instead, and remind the teacher to leave those details out next time.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p></li>
+          <li><strong>Default tool:</strong> Canvas, so you can edit the rubric like a document (not in the list? Pick No default tool). <strong>Knowledge (optional):</strong> the assignment directions and your standards.</li>
+          <li>Select <strong>Save</strong>, then try this first prompt:
+            <div class="prompt-block"><span class="label">Sample first prompt</span>
+Build a rubric for a 3rd grade task: students draw and label the stages of a bean plant's life cycle, from seed back to seed, and write one sentence about each stage. What matters most: the stages in the right order and correct labels.
+</div></li>
+        </ol>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different Gem</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#30"><span class="jump-num">30</span> Differentiation Helper</a></li>
+<li><a href="#32"><span class="jump-num">32</span> Read-Aloud Discussion Questions</a></li>
+<li><a href="#33"><span class="jump-num">33</span> Accommodation Idea Brainstormer</a></li>
+<li><a href="#34"><span class="jump-num">34</span> Sub Plan Builder</a></li>
+<li><a href="#35"><span class="jump-num">35</span> Classroom Management Script Helper</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#36">Done <span class="hint">Go to slide 36, sharing a Gem</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Gem. Rubric Builder.</span>
+      <span class="slide-footer-page">31</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Gem library</span>
+    <h2>Read-Aloud Discussion Questions</h2>
+    <p class="lead">Make a new Gem, paste these into <strong>Instructions</strong>, and select <strong>Save</strong>.</p>
+    <div class="prompt-block clip"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You write read-aloud discussion questions for K-8 teachers.
+
+The teacher will give you a title, author, grade level, and usually a short summary or the pages they're reading. Work from what the teacher tells you. If you're not sure you know the book well, say so and ask for a short summary. Never invent plot details.
+
+For each read-aloud, give:
+- 2 before-reading questions that build curiosity or connect to students' lives.
+- 4 during-reading questions, each with a suggested stopping point.
+- 3 after-reading questions that ask students to think, not just remember: why, what if, and how do you know.
+- 1 turn-and-talk prompt for partners.
+
+Write questions in words students at that grade can understand. Mix easier and harder questions, and mark the harder ones with a star.
+Before-reading and during-reading questions must not give away what happens later.
+Keep questions open and respectful of every family, culture, and experience. Don't ask students to share private information.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">name, settings, and a first prompt</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Open a new Gem. <strong>Name:</strong> Read-Aloud Discussion Questions. <strong>Description:</strong> Before, during, and after reading questions for any read-aloud.</li>
+          <li>Paste the instructions into <strong>Instructions</strong>.
+            <div class="prompt-block clip step-copy"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You write read-aloud discussion questions for K-8 teachers.
+
+The teacher will give you a title, author, grade level, and usually a short summary or the pages they're reading. Work from what the teacher tells you. If you're not sure you know the book well, say so and ask for a short summary. Never invent plot details.
+
+For each read-aloud, give:
+- 2 before-reading questions that build curiosity or connect to students' lives.
+- 4 during-reading questions, each with a suggested stopping point.
+- 3 after-reading questions that ask students to think, not just remember: why, what if, and how do you know.
+- 1 turn-and-talk prompt for partners.
+
+Write questions in words students at that grade can understand. Mix easier and harder questions, and mark the harder ones with a star.
+Before-reading and during-reading questions must not give away what happens later.
+Keep questions open and respectful of every family, culture, and experience. Don't ask students to share private information.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p></li>
+          <li><strong>Default tool:</strong> No default tool. <strong>Knowledge:</strong> none. Give it the title, author, grade, and a short summary in your own words. Don't upload copyrighted books.</li>
+          <li>Select <strong>Save</strong>, then try this first prompt:
+            <div class="prompt-block"><span class="label">Sample first prompt</span>
+Write read-aloud questions for "The Seat by the Window," a short story we're reading in 6th grade. Summary: Mara thinks her best friend Theo is avoiding her on the school bus the week of the science fair. He sits in a different seat every day and won't say why. At the fair, she finds out he was testing which seat is best for someone who gets bus sick, and that he did it for her.
+</div></li>
+        </ol>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different Gem</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#30"><span class="jump-num">30</span> Differentiation Helper</a></li>
+<li><a href="#31"><span class="jump-num">31</span> Rubric Builder</a></li>
+<li><a href="#33"><span class="jump-num">33</span> Accommodation Idea Brainstormer</a></li>
+<li><a href="#34"><span class="jump-num">34</span> Sub Plan Builder</a></li>
+<li><a href="#35"><span class="jump-num">35</span> Classroom Management Script Helper</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#36">Done <span class="hint">Go to slide 36, sharing a Gem</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Gem. Read-aloud questions.</span>
+      <span class="slide-footer-page">32</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Gem library</span>
+    <h2>Accommodation Idea Brainstormer</h2>
+    <p class="lead">Make a new Gem, paste these into <strong>Instructions</strong>, and select <strong>Save</strong>.</p>
+    <div class="callout danger">
+      <p><strong class="tag">Describe the need, never the child</strong> Never attach IEPs, 504 plans, or evaluations. This Gem helps you think. The student's team decides.</p>
+    </div>
+    <div class="prompt-block clip"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You help K-8 teachers brainstorm classroom accommodation and support ideas.
+
+Privacy comes first:
+- The teacher will describe a need in general terms, like "a student who has trouble starting written work" or "a student who needs frequent movement breaks." Work only from that description.
+- If the teacher includes a student's name, details from an IEP or 504 plan, test scores, a diagnosis tied to a specific child, or anything else that could identify a student, don't repeat any of it. Give ideas for the general need only, and kindly remind the teacher to describe the need, not the child.
+
+For each need, give:
+- 5 practical classroom ideas the teacher can try, each in one or two sentences.
+- For each idea, what it is meant to help with.
+- Make one of the five an idea that helps the whole class, not just one student.
+
+Limits:
+- These ideas are for brainstorming. Accommodations in an IEP or 504 plan are decided by the student's team. Say so in one sentence at the end of every answer.
+- Don't diagnose, label, or guess at a condition.
+- Don't give medical, medication, or diet advice. For health or safety needs, send the teacher to the school nurse or the student's team.
+- Keep your language strengths-based and respectful.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">name, settings, and a first prompt</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Open a new Gem. <strong>Name:</strong> Accommodation Idea Brainstormer. <strong>Description:</strong> Classroom support ideas for a described need. Brainstorming only. No student information.</li>
+          <li>Paste the instructions into <strong>Instructions</strong>.
+            <div class="prompt-block clip step-copy"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You help K-8 teachers brainstorm classroom accommodation and support ideas.
+
+Privacy comes first:
+- The teacher will describe a need in general terms, like "a student who has trouble starting written work" or "a student who needs frequent movement breaks." Work only from that description.
+- If the teacher includes a student's name, details from an IEP or 504 plan, test scores, a diagnosis tied to a specific child, or anything else that could identify a student, don't repeat any of it. Give ideas for the general need only, and kindly remind the teacher to describe the need, not the child.
+
+For each need, give:
+- 5 practical classroom ideas the teacher can try, each in one or two sentences.
+- For each idea, what it is meant to help with.
+- Make one of the five an idea that helps the whole class, not just one student.
+
+Limits:
+- These ideas are for brainstorming. Accommodations in an IEP or 504 plan are decided by the student's team. Say so in one sentence at the end of every answer.
+- Don't diagnose, label, or guess at a condition.
+- Don't give medical, medication, or diet advice. For health or safety needs, send the teacher to the school nurse or the student's team.
+- Keep your language strengths-based and respectful.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p></li>
+          <li><strong>Default tool:</strong> No default tool. <strong>Knowledge:</strong> none. Never attach anything with a student's information.</li>
+          <li>Select <strong>Save</strong>, then try this first prompt:
+            <div class="prompt-block"><span class="label">Sample first prompt</span>
+Brainstorm support ideas for a 4th grader who understands the material in class discussions but has a hard time getting started on independent writing.
+</div></li>
+        </ol>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different Gem</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#30"><span class="jump-num">30</span> Differentiation Helper</a></li>
+<li><a href="#31"><span class="jump-num">31</span> Rubric Builder</a></li>
+<li><a href="#32"><span class="jump-num">32</span> Read-Aloud Discussion Questions</a></li>
+<li><a href="#34"><span class="jump-num">34</span> Sub Plan Builder</a></li>
+<li><a href="#35"><span class="jump-num">35</span> Classroom Management Script Helper</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#36">Done <span class="hint">Go to slide 36, sharing a Gem</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Gem. Accommodation ideas.</span>
+      <span class="slide-footer-page">33</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Gem library</span>
+    <h2>Sub Plan Builder</h2>
+    <p class="lead">Make a new Gem, paste these into <strong>Instructions</strong>, and select <strong>Save</strong>.</p>
+    <div class="prompt-block clip"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You write substitute teacher plans for a K-8 teacher.
+
+The teacher will give you rough notes about the day. Turn them into a plan a substitute who has never met the class can follow.
+
+Every sub plan has:
+1. A short welcome and the three most important things to know today.
+2. The schedule, with times.
+3. For each block: what students do, in numbered steps, and where the materials are.
+4. What to do when students finish early.
+5. Routines the substitute will need: attendance, bathroom, lining up, and dismissal. Use the teacher's routines if given. Otherwise mark each one [fill in].
+6. Who to ask for help, with [name and room] placeholders.
+7. A short end-of-day section for the substitute to fill in.
+8. Emergency drills, and where to find health and allergy information, marked [add by hand].
+
+Rules:
+- Write directions as numbered steps, not paragraphs.
+- Plan activities that need no special technology or supplies unless the teacher says they're ready.
+- Use the bell schedule and routines in your knowledge files when they're there.
+- Never include student names, health information, or behavior notes. If the notes include names or private details, leave them out, write [add by hand] in their place, and remind the teacher to keep those details out of Gemini.
+- If something important is missing, like the times, ask before you draft.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">name, settings, and a first prompt</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Open a new Gem. <strong>Name:</strong> Sub Plan Builder. <strong>Description:</strong> Sub plans a stranger could follow. Private details marked for you to add by hand.</li>
+          <li>Paste the instructions into <strong>Instructions</strong>.
+            <div class="prompt-block clip step-copy"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You write substitute teacher plans for a K-8 teacher.
+
+The teacher will give you rough notes about the day. Turn them into a plan a substitute who has never met the class can follow.
+
+Every sub plan has:
+1. A short welcome and the three most important things to know today.
+2. The schedule, with times.
+3. For each block: what students do, in numbered steps, and where the materials are.
+4. What to do when students finish early.
+5. Routines the substitute will need: attendance, bathroom, lining up, and dismissal. Use the teacher's routines if given. Otherwise mark each one [fill in].
+6. Who to ask for help, with [name and room] placeholders.
+7. A short end-of-day section for the substitute to fill in.
+8. Emergency drills, and where to find health and allergy information, marked [add by hand].
+
+Rules:
+- Write directions as numbered steps, not paragraphs.
+- Plan activities that need no special technology or supplies unless the teacher says they're ready.
+- Use the bell schedule and routines in your knowledge files when they're there.
+- Never include student names, health information, or behavior notes. If the notes include names or private details, leave them out, write [add by hand] in their place, and remind the teacher to keep those details out of Gemini.
+- If something important is missing, like the times, ask before you draft.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p></li>
+          <li><strong>Default tool:</strong> Canvas, so you can edit and print the plan (not in the list? Pick No default tool). <strong>Knowledge (optional):</strong> your bell schedule and classroom routines. No student names.</li>
+          <li>Select <strong>Save</strong>, then try this first prompt:
+            <div class="prompt-block"><span class="label">Sample first prompt</span>
+Sub plan for tomorrow, 3rd grade. 8:00 morning meeting. 8:20 reading groups (they know their rotations). 9:30 math, workbook page 84. 10:30 recess. 10:50 science: plant unit, students draw and label a bean plant. 11:40 lunch. 12:20 art. 1:10 read-aloud. 1:40 pack up.
+</div></li>
+        </ol>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different Gem</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#30"><span class="jump-num">30</span> Differentiation Helper</a></li>
+<li><a href="#31"><span class="jump-num">31</span> Rubric Builder</a></li>
+<li><a href="#32"><span class="jump-num">32</span> Read-Aloud Discussion Questions</a></li>
+<li><a href="#33"><span class="jump-num">33</span> Accommodation Idea Brainstormer</a></li>
+<li><a href="#35"><span class="jump-num">35</span> Classroom Management Script Helper</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#36">Done <span class="hint">Go to slide 36, sharing a Gem</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Gem. Sub Plan Builder.</span>
+      <span class="slide-footer-page">34</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Gem library</span>
+    <h2>Classroom Management Script Helper</h2>
+    <p class="lead">Make a new Gem, paste these into <strong>Instructions</strong>, and select <strong>Save</strong>.</p>
+    <div class="prompt-block clip"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You help K-8 teachers find calm, respectful words for classroom management moments.
+
+The teacher will describe a situation in general terms. Give:
+- A short script the teacher can say in the moment: calm, brief, and focused on what to do next, not on what went wrong.
+- A follow-up script for a private conversation later, if one is needed.
+- One way to prevent the situation next time.
+
+How the scripts should sound:
+- Firm and kind at the same time.
+- Short sentences. Students under stress don't hear long speeches.
+- Protect the student's dignity. Redirect privately when you can. Never shame. Never use sarcasm.
+- Right for the age of the students the teacher names.
+- Use the class norms or behavior expectations in your knowledge files when they're there.
+
+Keep it general:
+- Don't ask for or use student names or personal details. If the teacher includes them, don't repeat them, and remind the teacher to leave details out.
+- Don't diagnose or label students.
+- If a situation involves a fight, a weapon, self-harm, a threat, or possible abuse or neglect, don't give a script. Tell the teacher to follow the school's safety procedures and get an administrator or counselor right away. For possible abuse or neglect, remind them they must report it the way their school and state require.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">name, settings, and a first prompt</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Open a new Gem. <strong>Name:</strong> Classroom Management Script Helper. <strong>Description:</strong> Short, calm scripts for hard moments. General situations only.</li>
+          <li>Paste the instructions into <strong>Instructions</strong>.
+            <div class="prompt-block clip step-copy"><span class="label">Gem instructions &middot; paste into Instructions</span>
+You help K-8 teachers find calm, respectful words for classroom management moments.
+
+The teacher will describe a situation in general terms. Give:
+- A short script the teacher can say in the moment: calm, brief, and focused on what to do next, not on what went wrong.
+- A follow-up script for a private conversation later, if one is needed.
+- One way to prevent the situation next time.
+
+How the scripts should sound:
+- Firm and kind at the same time.
+- Short sentences. Students under stress don't hear long speeches.
+- Protect the student's dignity. Redirect privately when you can. Never shame. Never use sarcasm.
+- Right for the age of the students the teacher names.
+- Use the class norms or behavior expectations in your knowledge files when they're there.
+
+Keep it general:
+- Don't ask for or use student names or personal details. If the teacher includes them, don't repeat them, and remind the teacher to leave details out.
+- Don't diagnose or label students.
+- If a situation involves a fight, a weapon, self-harm, a threat, or possible abuse or neglect, don't give a script. Tell the teacher to follow the school's safety procedures and get an administrator or counselor right away. For possible abuse or neglect, remind them they must report it the way their school and state require.
+</div>
+    <p class="clip-note">Scroll to read it all. Copy grabs all of the instructions.</p></li>
+          <li><strong>Default tool:</strong> No default tool. <strong>Knowledge (optional):</strong> your class norms or your school's behavior expectations.</li>
+          <li>Select <strong>Save</strong>, then try this first prompt:
+            <div class="prompt-block"><span class="label">Sample first prompt</span>
+What can I say when a 5th grader keeps calling out answers during whole-class lessons? I want to keep their energy without letting it take over.
+</div></li>
+        </ol>
+      </div>
+    </details>
+    <div class="next-step">
+      <details class="how">
+        <summary>Try another one <span class="hint">pick a different Gem</span></summary>
+        <div class="how-body">
+          <ul class="jump-list">
+<li><a href="#30"><span class="jump-num">30</span> Differentiation Helper</a></li>
+<li><a href="#31"><span class="jump-num">31</span> Rubric Builder</a></li>
+<li><a href="#32"><span class="jump-num">32</span> Read-Aloud Discussion Questions</a></li>
+<li><a href="#33"><span class="jump-num">33</span> Accommodation Idea Brainstormer</a></li>
+<li><a href="#34"><span class="jump-num">34</span> Sub Plan Builder</a></li>
+</ul>
+        </div>
+      </details>
+      <a class="done-btn" href="#36">Done <span class="hint">Go to slide 36, sharing a Gem</span></a>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Gem. Classroom scripts.</span>
+      <span class="slide-footer-page">35</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 2</span>
+    <h2>Sharing a Gem, and what travels with it</h2>
+    <p class="lead">Share your Parent Note Drafter with your team. They'll see your instructions, any files you uploaded, and the titles of attached files.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">3 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Open your Gems list from the menu. It may be called Gems, Explore Gems, or Gem manager.</li>
+          <li>Under <strong>My Gems</strong>, select the share icon on the <strong>Parent Note Drafter</strong>'s row.
+            <figure class="shot"><img loading="lazy" src="images/slide36-step2_share-button.png" alt="My Gems, with the share icon circled on the Parent Note Drafter's row" loading="lazy"></figure></li>
+          <li>If the sharing window opens, add colleagues and choose <strong>Viewer</strong> (they can use it) or <strong>Editor</strong> (they can change it). Or select <strong>Copy link</strong> and send it. If you see <strong>Connect Google Workspace?</strong> instead, select <strong>Cancel</strong> and use your school's sharing process. The personal account shown here requires broader Workspace access before opening the sharing window.
+            <figure class="shot"><img loading="lazy" src="images/slide36-step3_share-window.png" alt="The Connect Google Workspace prompt that can appear before Gem sharing" loading="lazy"></figure></li>
+        </ol>
+        <ul>
+          <li>Share the Parent Note Drafter, not the Co-Planner. In Module 3 you'll attach your notebook to the Co-Planner, and a Gem that uses a notebook can't be shared.</li>
+          <li>Sharing follows your district's Google Drive sharing settings. If you can't share outside your district, that's why.</li>
+          <li>If you added files from Drive, your colleagues also need access to those files for the Gem to use them.</li>
+          <li>If there's no <strong>Share</strong> option, your district may have turned Gem sharing off.</li>
+        </ul>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Share a Gem.</span>
+      <span class="slide-footer-page">36</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Break</span>
+    <h2>Take ten</h2>
+    <p class="lead">Stand up. Refill your coffee. Look at something farther away than your screen.</p>
+    <p>Module 3 starts on the next slide. Behind? Finish your first Gem, then keep going. The whole Gem library is in your workbook.</p>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Break.</span>
+      <span class="slide-footer-page">37</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 3</span>
+    <h2>Gemini Notebook (formerly NotebookLM)</h2>
+    <p class="lead">Use a notebook when you want Gemini to answer from your own documents and show where each answer came from.</p>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Module 3. Gemini Notebook.</span>
+      <span class="slide-footer-page">38</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 3</span>
+    <h2>Chat, Gem, or notebook?</h2>
+    <p class="lead">A Gem changes how Gemini <strong>acts</strong>. A notebook changes what Gemini <strong>knows</strong>.</p>
+    <details class="how">
+      <summary>Tell me more <span class="hint">the three side by side</span></summary>
+      <div class="how-body">
+        <table>
+          <thead><tr><th></th><th>Chat</th><th>Gem</th><th>Notebook</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Best for</strong></td><td>One-time questions and drafts</td><td>A job you do the same way every week</td><td>Working from a specific set of documents</td></tr>
+            <tr><td><strong>Knows</strong></td><td>What you type, plus general knowledge</td><td>Your standing instructions, plus up to 10 files</td><td>The sources you add, up to 50</td></tr>
+            <tr><td><strong>Where</strong></td><td>gemini.google.com</td><td>gemini.google.com</td><td>notebook.google.com</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Chat, Gem, or notebook.</span>
+      <span class="slide-footer-page">39</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 3</span>
+    <h2>Get your unit ready</h2>
+    <p class="lead">Use your own unit if you brought one. If not, pick one of ours and download its four files.</p>
+    <details class="how">
+      <summary>Grade 3 science: plant life cycles <span class="hint">4 files</span></summary>
+      <div class="how-body">
+    <ul class="downloads">
+      <li><a class="file" href="downloads/Slide-44_Gr3-Science_1-Unit-Overview.pdf" download><span class="file-name">Unit overview</span><span class="file-kind">PDF, 1 page</span></a></li>
+      <li><a class="file" href="downloads/Slide-44_Gr3-Science_2-Standards.pdf" download><span class="file-name">Sample standards</span><span class="file-kind">PDF, 1 page</span></a></li>
+      <li><a class="file" href="downloads/Slide-44_Gr3-Science_3-Reading-Passage.pdf" download><span class="file-name">Reading passage: From Seed to Seed</span><span class="file-kind">PDF, 1 page</span></a></li>
+      <li><a class="file" href="downloads/Slide-44_Gr3-Science_4-Lesson-Slides.pdf" download><span class="file-name">Lesson 3 slides: What does a seed need to grow?</span><span class="file-kind">PDF, 5 slides</span></a></li>
+    </ul>
+      </div>
+    </details>
+    <details class="how">
+      <summary>Grade 6 ELA: point of view <span class="hint">4 files</span></summary>
+      <div class="how-body">
+    <ul class="downloads">
+      <li><a class="file" href="downloads/Slide-44_Gr6-ELA_1-Unit-Overview.pdf" download><span class="file-name">Unit overview</span><span class="file-kind">PDF, 1 page</span></a></li>
+      <li><a class="file" href="downloads/Slide-44_Gr6-ELA_2-Standards.pdf" download><span class="file-name">Sample standards</span><span class="file-kind">PDF, 1 page</span></a></li>
+      <li><a class="file" href="downloads/Slide-44_Gr6-ELA_3-Short-Story.pdf" download><span class="file-name">Short story: The Seat by the Window</span><span class="file-kind">PDF, 2 pages</span></a></li>
+      <li><a class="file" href="downloads/Slide-44_Gr6-ELA_4-Lesson-Slides.pdf" download><span class="file-name">Lesson 2 slides: Who is telling this story?</span><span class="file-kind">PDF, 5 slides</span></a></li>
+    </ul>
+      </div>
+    </details>
+    <details class="how">
+      <summary>Tell me more <span class="hint">using your own unit</span></summary>
+      <div class="how-body">
+        <p>Gather three to five files: a unit overview or curriculum guide, a reading passage, your standards, and lesson slides. Google Docs, Google Slides, PDFs, and Word and PowerPoint files all work.</p>
+        <p>Before you add anything, check it for student names and photos. Leave out student work, gradebooks, and anything else with student information. Four good sources make a better notebook than forty random ones.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Get your unit.</span>
+      <span class="slide-footer-page">40</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 3</span>
+    <h2>Create your notebook</h2>
+    <p class="lead">Open a new notebook and add the files for one unit.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">6 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Select <a href="https://notebook.google.com" target="_blank" rel="noopener"><strong>notebook.google.com</strong></a>, or switch to the tab you opened during the access check.
+            <figure class="shot"><img loading="lazy" src="images/slide41-step1_notebook-home.png" alt="The Gemini Notebook home page, with Welcome to Gemini Notebook" loading="lazy"></figure></li>
+          <li>Select <strong>+ New notebook</strong>. Some screens say Create new notebook.
+            <figure class="shot"><img loading="lazy" src="images/slide41-step2_create-new-notebook.png" alt="The + New notebook button on the Gemini Notebook home page" loading="lazy"></figure></li>
+          <li>In the window that opens, select <strong>Upload files</strong>. Using Google Docs or Slides? Select <strong>Drive</strong> instead. The big heading at the top of that window changes; you can ignore it.
+            <figure class="shot"><img loading="lazy" src="images/slide41-step3_upload-a-source.png" alt="The window for adding sources, with Upload files, Websites, Books, Drive, and Copied text" loading="lazy"></figure></li>
+          <li>Choose the four files for one unit, not all eight. For our Grade 3 unit, select the four files that start with <strong>Slide-44_Gr3-Science</strong>, then select <strong>Open</strong>. Using the Grade 6 unit? Choose the four <strong>Slide-44_Gr6-ELA</strong> files instead.
+            <figure class="shot"><img loading="lazy" src="images/slide41-step4_pick-unit-files.png" alt="The file picker showing all eight sample files, with the four Slide-44_Gr3-Science files selected and the Open button" loading="lazy"></figure></li>
+          <li>Give it a moment to read your files. Each one appears under <strong>Sources</strong> with a check mark beside it. Checked files are the ones the notebook uses. Gemini Notebook also names the notebook for you, from what's in your files.
+            <figure class="shot"><img loading="lazy" src="images/slide41-step5_notebook-ready.png" alt="The new notebook, named From Seed to Seed: The Life of a Bean Plant, with four sources, each checked in the Sources panel" loading="lazy"></figure></li>
+          <li>Optional: want a different name? Select the name at the top and type a new one, like <strong>Gr 3 Plant Life Cycles</strong>. Can't find how? Skip it.
+            <figure class="shot"><img loading="lazy" src="images/slide41-step6_rename-notebook.png" alt="The notebook name at the top of the page, changed to Gr 3 Plant Life Cycles" loading="lazy"></figure></li>
+        </ol>
+        <div class="callout safe">
+          <p><strong class="tag">No Save button</strong> Your notebook saves on its own. It's ready now, so ask it your first question on the next slide.</p>
+        </div>
+        <div class="callout note">
+          <p><strong class="tag">A new look is rolling out</strong> Google is updating how Gemini Notebook looks this fall. If a button isn't where the picture shows it, look for the same words.</p>
+        </div>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Create your notebook.</span>
+      <span class="slide-footer-page">41</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 3</span>
+    <h2>Ask questions your sources can answer</h2>
+    <p class="lead">Ask your notebook a question, then check where the answer came from.</p>
+    <div class="prompt-block"><span class="label">Try this &middot; school account &middot; approved tool &middot; parent-proof</span>
+What are the learning goals of this unit, and which lesson covers each one?
+</div>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">3 steps, with pictures, and more to try</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Paste the question into your notebook's chat box and press Enter.
+            <div class="prompt-block step-copy"><span class="label">Try this &middot; school account &middot; approved tool &middot; parent-proof</span>
+What are the learning goals of this unit, and which lesson covers each one?
+</div>
+            <figure class="shot"><img loading="lazy" src="images/slide42-step1_notebook-chat.png" alt="The notebook chat with the learning-goals question typed in" loading="lazy"></figure></li>
+          <li>See the small numbers in the answer? Hover over one to see the exact words it came from.
+            <figure class="shot"><img loading="lazy" src="images/slide42-step2_citation-hover.png" alt="An answer with a citation number circled, and an arrow to the source quote that shows on hover" loading="lazy"></figure></li>
+          <li>Select the number, or <strong>View source</strong> in the pop-up, to jump to that spot in your source. When an answer is headed to students or families, check where it came from.
+            <figure class="shot"><img loading="lazy" src="images/slide42-step3_citation-source.png" alt="The source document open at the quoted passage after selecting a citation" loading="lazy"></figure></li>
+        </ol>
+        <h4>More to try</h4>
+        <div class="prompt-block"><span class="label">Try this</span>
+Which vocabulary words should I teach before students do the main reading in this unit, and why?
+</div>
+        <div class="prompt-block"><span class="label">Try this</span>
+Where might students get confused in this unit? Point to the lesson or passage where it would happen.
+</div>
+        <p>Using the Grade 6 unit? Also try: <em>What clues in the story suggest Mara might be wrong about Theo?</em></p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Ask your notebook.</span>
+      <span class="slide-footer-page">42</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 3</span>
+    <h2>What happens when the answer isn't there?</h2>
+    <p class="lead">Ask something your sources don't cover, and watch what happens.</p>
+    <div class="prompt-block"><span class="label">Try this</span>
+What field trips would fit this unit, and how much do they usually cost?
+</div>
+    <details class="how">
+      <summary>What to notice <span class="hint">and one setting to try</span></summary>
+      <div class="how-body">
+        <p>Does it tell you the sources don't cover this? Does it answer anyway? If it answers, are there citations? No citation means the answer didn't come from your documents. In a notebook, you can trace an answer back to a page, or notice when you can't.</p>
+        <h4>Optional: answers shaped for teaching</h4>
+        <ol class="steps">
+          <li>At the top right of the notebook, select the three dots (<strong>&#8942;</strong>), then <strong>Configure Chat</strong>.
+            <figure class="shot"><img loading="lazy" src="images/slide43-step1_configure-chat.png" alt="The three-dot menu at the top right of a notebook, with Configure Chat" loading="lazy"></figure></li>
+          <li>Choose <strong>Default</strong>, <strong>Learning Guide</strong>, or <strong>Custom</strong>, then select <strong>Save</strong>. Custom lets you describe how you want answers, for example: "Answer as a 3rd grade teacher planning lessons. Keep it short and practical." If this optional window stays on Loading, close it and keep going.
+            <figure class="shot"><img loading="lazy" src="images/slide43-step2_chat-styles.png" alt="The Configure Chat window with the Default, Learning Guide, and Custom styles" loading="lazy"></figure></li>
+        </ol>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Test the edges.</span>
+      <span class="slide-footer-page">43</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 3</span>
+    <h2>Keep the good answers</h2>
+    <p class="lead">When an answer is worth keeping, select the pin icon under it. That's <strong>Save to note</strong>.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">2 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Under the answer, select the pin icon, the first of the small icons. That's <strong>Save to note</strong>. It's saved in your notebook with its citations. Saved answers can't be edited, so to change one, copy it into a Google Doc.
+            <figure class="shot"><img loading="lazy" src="images/slide44-step1_save-to-note.png" alt="An answer in the notebook chat, with the pin icon circled, followed by the copy and thumbs icons" loading="lazy"></figure></li>
+          <li>Optional: share the notebook with a colleague. Select the share icon at the top right. Under <strong>Add people and groups</strong>, type their school email, choose <strong>Viewer</strong> or <strong>Editor</strong>, then select <strong>Send</strong>. Google's help says public sharing is off for school accounts, so families get things from you by download. That's Module 4.
+            <figure class="shot"><img loading="lazy" src="images/slide44-step2_share-notebook.png" alt="The notebook sharing window, with Add people and groups, the Viewer and Editor choices, and Send" loading="lazy"></figure></li>
+        </ol>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Save to note.</span>
+      <span class="slide-footer-page">44</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 3</span>
+    <h2>Connect your notebook to a Gem</h2>
+    <p class="lead">Attach your notebook to your Lesson Plan Co-Planner Gem, then ask it to plan a lesson.</p>
+    <p>Missed the Co-Planner? Build it on slide 28 first.</p>
+    <div class="prompt-block"><span class="label">Try this &middot; school account &middot; approved tool &middot; parent-proof</span>
+Plan the third lesson in my unit notebook as a 45-minute lesson. Keep it consistent with my unit files, and list the standards it covers, using the codes in my files.
+</div>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">6 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Go back to Gemini. You're in Gemini Notebook right now, which is a separate site. Switch to your Gemini tab, or select <a href="https://gemini.google.com" target="_blank" rel="noopener"><strong>gemini.google.com</strong></a>.</li>
+          <li>In Gemini's menu on the left, select <strong>Gems</strong> (it may say Explore Gems). Under <strong>My Gems</strong>, find the <strong>Lesson Plan Co-Planner</strong> and select its pencil icon.
+            <figure class="shot"><img loading="lazy" src="images/slide45-step2_edit-gem.png" alt="My Gems, with the pencil icon on the Lesson Plan Co-Planner's row" loading="lazy"></figure></li>
+          <li>Under <strong>Knowledge</strong>, select the plus sign (<strong>+</strong>), then <strong>Gemini Notebook</strong>. Some screens say NotebookLM or put Notebooks under More uploads.
+            <figure class="shot"><img loading="lazy" src="images/slide45-step3_more-uploads-notebooks.png" alt="The Gem editor for the Lesson Plan Co-Planner, with the Knowledge plus sign's menu open: Upload files, Add from Drive, Google Photos, and Gemini Notebook" loading="lazy"><figcaption>From a personal account. Your school account may not show the Upgrade button.</figcaption></figure></li>
+          <li>Check your notebook, then select <strong>Add</strong>. Look for the name it gave itself, or the one you chose.
+            <figure class="shot"><img loading="lazy" src="images/slide45-step4_pick-notebook.png" alt="The Add notebook window, with the Gr 3 Plant Life Cycles notebook checked and the Add button" loading="lazy"></figure></li>
+          <li>Select the blue <strong>Update</strong> button at the top right, next to the words <strong>Gem not saved</strong>. When you edit a Gem you already made, the button says Update instead of Save.</li>
+          <li>Select the back arrow (<strong>&lt;</strong>) at the top left of the editor to return to your Gems. Select the Lesson Plan Co-Planner to open a chat with it, and paste this prompt. Your lessons aren't numbered? Name the lesson instead. If the Gem asks about your class first, answer it. That's the Gem working.
+            <div class="prompt-block step-copy"><span class="label">Try this &middot; school account &middot; approved tool &middot; parent-proof</span>
+Plan the third lesson in my unit notebook as a 45-minute lesson. Keep it consistent with my unit files, and list the standards it covers, using the codes in my files.
+</div></li>
+        </ol>
+        <div class="callout">
+          <p><strong class="tag">No Notebooks option?</strong> Your district may have that connection turned off. Attach your unit files under <strong>Knowledge</strong> instead. Uploads blocked too? Paste your unit overview into the chat with the Gem.</p>
+        </div>
+        <div class="callout">
+          <p><strong class="tag">One catch</strong> A Gem that uses a notebook can't be shared. To share a Gem, attach files instead.</p>
+        </div>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Notebook plus Gem.</span>
+      <span class="slide-footer-page">45</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 3</span>
+    <h2>You may also see Notebooks inside Gemini</h2>
+    <p class="lead">Your notebooks may show up in Gemini's menu too. For Module 4, stay at <a href="https://notebook.google.com" target="_blank" rel="noopener"><strong>notebook.google.com</strong></a>.</p>
+    <details class="how">
+      <summary>Tell me more <span class="hint">what works where</span></summary>
+      <div class="how-body">
+        <p>Google is adding a <strong>Notebooks</strong> section to the Gemini app's menu. It shows the notebooks you made in Gemini Notebook, kept in sync. Notebooks someone shared with you stay at notebook.google.com. It started reaching school accounts in September, so yours may or may not have it yet.</p>
+        <figure class="shot"><img loading="lazy" src="images/slide46-step1_notebooks-in-gemini.png" alt="The Gemini menu, with Gr 3 Plant Life Cycles listed under Notebooks" loading="lazy"><figcaption>From a personal account. Your school account may not show the Upgrade button.</figcaption></figure>
+        <table>
+          <thead><tr><th></th><th>Notebooks in Gemini</th><th>Gemini Notebook (notebook.google.com)</th></tr></thead>
+          <tbody>
+            <tr><td>Chat with your sources</td><td>Yes</td><td>Yes</td></tr>
+            <tr><td>Add sources</td><td>Yes</td><td>Yes</td></tr>
+            <tr><td>Audio Overviews, quizzes, slide decks, and other Studio items</td><td>No</td><td>Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Notebooks in Gemini.</span>
+      <span class="slide-footer-page">46</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 4</span>
+    <h2>Make classroom-ready materials</h2>
+    <p class="lead">Turn your notebook into materials in the <strong>Studio</strong> panel. Start the Audio Overview first; it takes the longest.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">the Studio panel and daily limits, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Find <strong>Studio</strong> in your notebook. It may be a panel on the right or a tab at the top. Select an item to set its options before you make it. Some versions show a pencil icon on the tile.
+            <figure class="shot"><img loading="lazy" src="images/slide47-step1_studio-panel.png" alt="The Studio tab in a notebook: tiles for Audio Overview, Slide Deck, Video Overview, Mind Map, Reports, Flashcards, Quiz, Infographic, and Data Table, with finished items below" loading="lazy"></figure></li>
+          <li>Plan low and make each one count. Google's tables list 3 Audio Overviews a day for accounts like yours, and 10 each of reports, flashcards, quizzes, and mind maps, but the usage window now shows a percent instead. To check, open <strong>Settings</strong>, then <strong>Usage</strong>. It shows the percent you've used and when it resets.
+            <figure class="shot"><img loading="lazy" src="images/slide47-step2_usage.png" alt="The Gemini Notebook AI Usage and Limits window, with percent used and reset times" loading="lazy"><figcaption>From a personal account. Your school account may not offer Upgrade to AI Plus, and its limits may be different.</figcaption></figure></li>
+        </ol>
+        <p>Everything here is built from your sources, and it can still get things wrong. Give each one the 30-second check: accurate, right for the grade, fair, and on target.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Module 4. Studio.</span>
+      <span class="slide-footer-page">47</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 4</span>
+    <h2>An Audio Overview for families</h2>
+    <p class="lead">Make a short Audio Overview that tells families what the unit is about. Use this as its focus.</p>
+    <div class="prompt-block"><span class="label">Focus prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+This is for families of our students. Explain what their children are learning in this unit and why it's worth learning, in plain language. Suggest two simple, free things families can do at home to support the learning, safe for kids. Keep it warm and free of education jargon.
+</div>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">6 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>In the <strong>Studio</strong> panel, select <strong>Audio Overview</strong> to open its options. If you see a pencil icon, you can select that too.
+            <figure class="shot"><img loading="lazy" src="images/slide48-step1_audio-pencil.png" alt="The Studio tiles, with the pointer on Audio Overview and its tooltip" loading="lazy"></figure></li>
+          <li>Under <strong>Format</strong>, choose <strong>Brief</strong>: one speaker, under two minutes, which suits busy families. Brief has no length choice.
+            <figure class="shot"><img loading="lazy" src="images/slide48-step2_audio-options_brief.png" alt="The Customize Audio Overview window with Brief chosen: no Length choice, the focus prompt pasted in, and Generate now" loading="lazy"></figure>
+            <p>Want something longer? <strong>Deep Dive</strong>, the default, is a talk between two hosts. With Deep Dive, a <strong>Length</strong> choice appears: <strong>Short</strong>, <strong>Default</strong>, or <strong>Long</strong>.</p>
+            <figure class="shot"><img loading="lazy" src="images/slide48-step2_audio-options_deep_dive.png" alt="The same window with Deep Dive chosen, showing Length: Short, Default, and Long" loading="lazy"></figure></li>
+          <li>Paste the focus prompt into the box that asks <strong>What should the AI hosts focus on in this episode?</strong> Then select <strong>Generate now</strong>.
+            <div class="prompt-block step-copy"><span class="label">Focus prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+This is for families of our students. Explain what their children are learning in this unit and why it's worth learning, in plain language. Suggest two simple, free things families can do at home to support the learning, safe for kids. Keep it warm and free of education jargon.
+</div></li>
+          <li>Under the Studio tiles you'll see <strong>Generating Audio Overview</strong> and <strong>Come back in a few minutes</strong>. Go on to the next slide while it works, then come back here.
+            <figure class="shot"><img loading="lazy" src="images/slide48-step4_audio-generation.png" alt="The Studio panel, with Generating Audio Overview and Come back in a few minutes under the tiles" loading="lazy"></figure></li>
+          <li>When it's ready, its name shows under the tiles. Select the triangle to the right of the name. Its label says <strong>Play</strong>. The player opens at the bottom of Studio. Listen all the way through.
+            <figure class="shot"><img loading="lazy" src="images/slide48-step5_audio-play-button.png" alt="The finished Audio Overview under the Studio tiles, with its Play button and the three dots beside it" loading="lazy"></figure></li>
+          <li>To save it, select the three dots (<strong>&#8942;</strong>) next to its name, or the three dots in the player. Either one opens the same menu, and it pops up between them. Select <strong>Download</strong> to save the audio file. Share it through a channel your district approves, like your class page or newsletter. Tell families it was made with AI from your class materials. Some districts require that, and it's good practice anyway.
+            <figure class="shot"><img loading="lazy" src="images/slide48-step6_audio-download.png" alt="The menu with Download at the top, between the two circled sets of three dots: one next to the audio's name, one in the player below" loading="lazy"></figure></li>
+        </ol>
+        <p>Google's help says public notebook sharing is off for school accounts, so a download is the dependable route.</p>
+        <div class="callout safe">
+          <p><strong class="tag">30-second check</strong> Facts that match your unit. Nothing that sounds odd for your grade. Examples that fit every family. A message that serves your lesson goal. If something is off, change the focus prompt and make a new one tomorrow.</p>
+        </div>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Audio Overview.</span>
+      <span class="slide-footer-page">48</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 4</span>
+    <h2>A study guide</h2>
+    <p class="lead">Make a study guide, then export it to Google Docs. After you paste the prompt, change [grade] to your grade.</p>
+    <div class="prompt-block"><span class="label">Report prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+A study guide for my [grade] students: key vocabulary with simple definitions, the main ideas of the unit in order, and five practice questions with an answer key at the end. Keep the words simple enough for [grade] students to read on their own.
+</div>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">4 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>In <strong>Studio</strong>, select <strong>Reports</strong>. The window that opens is called Create report.
+            <figure class="shot"><img loading="lazy" src="images/slide49-step1_reports.png" alt="The Studio tiles, with the pointer on Reports and its tooltip" loading="lazy"></figure></li>
+          <li>Under <strong>Format</strong>, choose <strong>Document</strong>. Under <strong>Template</strong>, select the pencil on <strong>Study Guide</strong> so you can add your own instructions. Don't see Study Guide? Choose <strong>Create Your Own</strong>.
+            <figure class="shot"><img loading="lazy" src="images/slide49-step2_study-guide.png" alt="The Create report window: Format with Document chosen, and Template with Study Guide" loading="lazy"></figure></li>
+          <li>Paste the prompt into the box that opens, change [grade], then select <strong>Generate now</strong>. Read all of it. No box to paste into? Select <strong>Generate now</strong> anyway, or paste the prompt into the notebook's chat and copy the answer into a Google Doc.
+            <div class="prompt-block step-copy"><span class="label">Report prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+A study guide for my [grade] students: key vocabulary with simple definitions, the main ideas of the unit in order, and five practice questions with an answer key at the end. Keep the words simple enough for [grade] students to read on their own.
+</div></li>
+          <li>Select the three dots (<strong>&#8942;</strong>) at the top right of the report, then select <strong>Export to Docs</strong> to get a Google Doc you can edit and print.
+            <figure class="shot"><img loading="lazy" src="images/slide49-step4_export-to-docs.png" alt="The menu on a finished report, opened from the circled three dots at the top right, with Export to Docs at the top" loading="lazy"></figure></li>
+        </ol>
+        <div class="callout safe">
+          <p><strong class="tag">30-second check</strong> Check the reading level first. Study guides tend to drift toward adult language. Fix it with a follow-up or by hand, then check the answer key against your sources.</p>
+        </div>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Study guide.</span>
+      <span class="slide-footer-page">49</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 4</span>
+    <h2>A quiz</h2>
+    <p class="lead">Make a practice quiz, then a version students can take. After you paste a prompt, change [grade] to your grade.</p>
+    <div class="prompt-block"><span class="label">Quiz focus prompt</span>
+Focus on the main ideas of this unit. Use words [grade] students can read on their own.
+</div>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">3 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>In <strong>Studio</strong>, select <strong>Quiz</strong> to open its options. Some versions have a pencil icon or group flashcards and quizzes together. Pick the <strong>Number of Questions</strong> and the <strong>Level of Difficulty</strong>, then paste the focus prompt into the box that asks <strong>What should the topic be?</strong>
+            <div class="prompt-block step-copy"><span class="label">Quiz focus prompt</span>
+Focus on the main ideas of this unit. Use words [grade] students can read on their own.
+</div>
+            <figure class="shot"><img loading="lazy" src="images/slide50-step1_quiz-options.png" alt="The Quiz window: Number of Questions, Level of Difficulty, and What should the topic be?" loading="lazy"></figure></li>
+          <li>Select <strong>Generate now</strong>, then take the quiz yourself. Did every answer match your sources?
+            <figure class="shot"><img loading="lazy" src="images/slide50-step2_quiz.png" alt="A Studio quiz question on the screen" loading="lazy"></figure></li>
+          <li>Google doesn't document a way to download Studio quizzes, so treat them as practice. For a version you can hand out or put in Google Forms, paste this into the notebook's chat:
+            <div class="prompt-block"><span class="label">Chat prompt &middot; school account &middot; approved tool &middot; parent-proof</span>
+Write 8 multiple-choice questions on this unit for [grade] students, with 3 answer choices each and an answer key at the end. Base every question on the sources, and cite the source for each one.
+</div></li>
+        </ol>
+        <p>Copy the result into a Google Doc, or into Google Forms one question at a time. Before students see it, take out the citation numbers and the answer key.</p>
+        <div class="callout safe">
+          <p><strong class="tag">30-second check</strong> Check every answer against your sources. Then check the wrong choices: believable, not silly, and no trick questions.</p>
+        </div>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Quiz.</span>
+      <span class="slide-footer-page">50</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 4</span>
+    <h2>Flashcards</h2>
+    <p class="lead">Make flashcards, then download them to open in Google Sheets. After you paste the prompt, change [grade] to your grade.</p>
+    <div class="prompt-block"><span class="label">Flashcard focus prompt</span>
+Key vocabulary from this unit, with definitions [grade] students can understand on their own.
+</div>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">3 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>In <strong>Studio</strong>, select <strong>Flashcards</strong> to open its options. Some versions have a pencil icon. Pick the <strong>Number of Cards</strong> and the <strong>Level of Difficulty</strong>, then paste the focus prompt into the box that asks <strong>What should the topic be?</strong>
+            <div class="prompt-block step-copy"><span class="label">Flashcard focus prompt</span>
+Key vocabulary from this unit, with definitions [grade] students can understand on their own.
+</div>
+            <figure class="shot"><img loading="lazy" src="images/slide51-step1_flashcard-options.png" alt="The Flashcards window: Number of Cards, Level of Difficulty, and What should the topic be?" loading="lazy"></figure></li>
+          <li>Select <strong>Generate now</strong>, then flip through the cards.</li>
+          <li>To keep them, open the three-dot menu on a card and select <strong>Download set</strong>. They save as a CSV file. Upload it to Google Drive, then open it with Google Sheets. From there you can print them or make paper cards.
+            <figure class="shot"><img loading="lazy" src="images/slide51-step3_flashcards-download.png" alt="The three-dot menu on a flashcard, with Download set" loading="lazy"></figure></li>
+        </ol>
+        <div class="callout safe">
+          <p><strong class="tag">30-second check</strong> One clear idea on the front of each card. The back answers the question without giving away more than it asks.</p>
+        </div>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Flashcards.</span>
+      <span class="slide-footer-page">51</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 4</span>
+    <h2>A mind map</h2>
+    <p class="lead">Make a one-page map of how the ideas in your unit connect.</p>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">3 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>Select <strong>Mind Map</strong> in Studio. Some versions also show a Mind Map chip near the chat box.
+            <figure class="shot"><img loading="lazy" src="images/slide52-step1_mind-map-chip.png" alt="The Studio tiles, with the pointer on Mind Map and its tooltip" loading="lazy"></figure></li>
+          <li>It's saved in <strong>Studio</strong>. Open it, and select the small arrows on each branch to open it up.
+            <figure class="shot"><img loading="lazy" src="images/slide52-step2_mind-map.png" alt="A finished mind map of the sample unit" loading="lazy"></figure></li>
+          <li>To print it or project it on the first day of the unit, select the download button at the bottom right.</li>
+        </ol>
+        <div class="callout safe">
+          <p><strong class="tag">30-second check</strong> Look at the big branches. Are those the main ideas of your unit? If a key idea is missing, it may be missing or buried in your sources too. Worth knowing either way.</p>
+        </div>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Mind map.</span>
+      <span class="slide-footer-page">52</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 4</span>
+    <h2>A slide deck</h2>
+    <p class="lead">Make slides for one lesson, then download them to edit in Google Slides. After you paste the prompt, fill in the lesson.</p>
+    <div class="prompt-block"><span class="label">Slide deck focus prompt</span>
+Slides for [lesson name or number] from this unit. Big text, few words per slide, and one question for students on the last slide.
+</div>
+    <div class="callout">
+      <p><strong class="tag">Don't see Slide Deck?</strong> Google only turns it on for school accounts marked 18 or older. Ask the notebook's chat for a slide-by-slide outline instead, and build it in Google Slides.</p>
+    </div>
+    <details class="how">
+      <summary>Show me how, step by step <span class="hint">3 steps, with pictures</span></summary>
+      <div class="how-body">
+        <ol class="steps">
+          <li>In <strong>Studio</strong>, select <strong>Slide Deck</strong> to open its options. Some versions have a pencil icon. Choose a format: <strong>Detailed Deck</strong> or <strong>Presenter Slides</strong>.
+            <figure class="shot"><img loading="lazy" src="images/slide53-step1_slide-deck-options.png" alt="The Slide Deck options: Detailed Deck or Presenter Slides, length, and the focus box" loading="lazy"></figure></li>
+          <li>Pick a <strong>Length</strong>, paste the focus prompt into the box that asks you to describe the slide deck, then select <strong>Generate now</strong>.
+            <div class="prompt-block step-copy"><span class="label">Slide deck focus prompt</span>
+Slides for [lesson name or number] from this unit. Big text, few words per slide, and one question for students on the last slide.
+</div></li>
+          <li>When it's ready, open the menu at the top right and select <strong>Download PowerPoint (.pptx)</strong> or <strong>Download PDF Document (.pdf)</strong>. To edit it, upload the PowerPoint file to Google Drive, then open it with Google Slides.
+            <figure class="shot"><img loading="lazy" src="images/slide53-step3_slide-deck-download.png" alt="The menu on a finished slide deck, with Download PDF Document and Download PowerPoint" loading="lazy"></figure></li>
+        </ol>
+        <div class="callout safe">
+          <p><strong class="tag">30-second check</strong> Read every slide as a student would. Check the facts, check any images for anything odd, and cut words. A student should be able to read a slide in five seconds.</p>
+        </div>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Slide deck.</span>
+      <span class="slide-footer-page">53</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Module 4</span>
+    <h2>Before anything leaves your hands</h2>
+    <p class="lead">You made a lot, fast. The last step is always yours.</p>
+    <ul class="big-list">
+      <li><strong>Read all of it.</strong></li>
+      <li><strong>Run the 30-second check.</strong></li>
+      <li><strong>Scrub out names and details.</strong></li>
+      <li><strong>Fill in anything in [brackets].</strong></li>
+      <li><strong>Own it.</strong> If you wouldn't put your name on it, don't send it.</li>
+    </ul>
+    <div class="callout safe">
+      <p><strong class="tag">Your judgment stays in charge</strong> Gemini makes drafts. You make the decisions.</p>
+    </div>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Your review.</span>
+      <span class="slide-footer-page">54</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Take it home</span>
+    <h2>Look at what you made</h2>
+    <ul class="big-list">
+      <li>A prompt pattern for every day: CRAFT.</li>
+      <li>Two or three classroom drafts.</li>
+      <li>Two Gems: a Parent Note Drafter, and a Lesson Plan Co-Planner that knows your unit.</li>
+      <li>A notebook built on a real unit.</li>
+      <li>Materials for students and families.</li>
+    </ul>
+    <p class="lead">And the part that will outlast any one tool: you know how to check what it gives you.</p>
+    <div class="slide-footer">
+      <span class="slide-footer-text">What you made.</span>
+      <span class="slide-footer-page">55</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Take it home</span>
+    <h2>Try this week</h2>
+    <p class="lead">One small thing a day, fifteen minutes or less.</p>
+    <table>
+      <tbody>
+        <tr><td><strong>Monday</strong></td><td>Build one more Gem from the library.</td></tr>
+        <tr><td><strong>Tuesday</strong></td><td>Make a notebook for the unit you're teaching now.</td></tr>
+        <tr><td><strong>Wednesday</strong></td><td>Turn one lesson into an exit ticket, and check it.</td></tr>
+        <tr><td><strong>Thursday</strong></td><td>Make an Audio Overview or a study guide, and review all of it.</td></tr>
+        <tr><td><strong>Friday</strong></td><td>Show a colleague one thing you made.</td></tr>
+      </tbody>
+    </table>
+    <ul class="downloads">
+      <li><a class="file" href="downloads/Gemini-K8_Try-This-Week.pdf" download><span class="file-name">Try this week</span><span class="file-kind">PDF, 1 page</span></a></li>
+    </ul>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Try this week.</span>
+      <span class="slide-footer-page">56</span>
+    </div>
+  </article>
+<article class="slide">
+    <span class="section-badge">Take it home</span>
+    <h2>Take it with you</h2>
+    <p class="lead">Download your workbook before you close this tab. It has every prompt, every Gem, and every step, with the pictures.</p>
+    <ul class="downloads">
+      <li><a class="file" href="downloads/Gemini-K8_Workbook.docx" download><span class="file-name">Workbook, editable</span><span class="file-kind">Word (.docx), opens in Google Docs</span></a></li>
+      <li><a class="file" href="downloads/Gemini-K8_Workbook.pdf" download><span class="file-name">Workbook, ready to print</span><span class="file-kind">PDF</span></a></li>
+      <li><a class="file" href="downloads/Gemini-K8_Quick-Reference.pdf" download><span class="file-name">Quick reference card</span><span class="file-kind">PDF, 1 page</span></a></li>
+      <li><a class="file" href="downloads/Gemini-K8_Try-This-Week.pdf" download><span class="file-name">Try this week</span><span class="file-kind">PDF, 1 page</span></a></li>
+    </ul>
+    <p>Questions later? Visit <a href="https://woodenboyindustriesai.com" target="_blank" rel="noopener"><strong>woodenboyindustriesai.com</strong></a>. Thank you for your time today, and for the work you do with kids every day.</p>
+    <details class="how">
+      <summary>Tell me more <span class="hint">opening the workbook in Google Docs</span></summary>
+      <div class="how-body">
+        <p>Upload the .docx to your Google Drive, then open it. Every prompt copies cleanly from there.</p>
+      </div>
+    </details>
+    <div class="slide-footer">
+      <span class="slide-footer-text">Take it with you.</span>
+      <span class="slide-footer-page">57</span>
+    </div>
+  </article>
+</main>
+<script>
+// The participant page, slide by slide. Static: every slide is in the page,
+// and nothing is loaded or sent anywhere.
+(function () {
+  'use strict';
+
+  // Inside facilitator.html the deck is an iframe: it follows the facilitator
+  // and reports its own moves back, and leaves this browser's saved place alone.
+  var embedded = window.parent !== window;
+  var KEY = 'wbi-gemini-k8-slide';
+
+  var slidesEl = document.getElementById('slides');
+  var slides = Array.prototype.slice.call(slidesEl.querySelectorAll('.slide'));
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var curEl = document.getElementById('curSlide');
+  var idx = -1;
+  document.getElementById('totalSlides').textContent = slides.length;
+
+  function show(i, fromParent) {
+    if (!slides.length) return;
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    if (i === idx) { if (!document.documentElement.classList.contains('single-slide-mode')) slides[i].scrollIntoView({block:'start'}); return; }
+    if (idx >= 0) slides[idx].classList.remove('active-slide');
+    slides[i].classList.add('active-slide');
+    idx = i;
+    curEl.textContent = i + 1;
+    prevBtn.disabled = i === 0;
+    nextBtn.disabled = i === slides.length - 1;
+    // The slide column scrolls inside a window-wide area (deck-shell.html),
+    // so each new slide starts at its top.
+    window.scrollTo(0, 0);
+    slidesEl.scrollTop = 0;
+    if (!document.documentElement.classList.contains("single-slide-mode")) slides[i].scrollIntoView({block:"start"});
+    if (embedded) {
+      if (!fromParent) { try { window.parent.postMessage({ type: 'wbi-pos', pos: i + 1 }, '*'); } catch (e) {} }
+      return;
+    }
+    // Remember the slide in this browser and in the address (#23), so a
+    // reload, or a number the facilitator reads out, lands in the right place.
+    try { localStorage.setItem(KEY, String(i + 1)); } catch (e) {}
+    try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
+  }
+
+  function startAt() {
+    var n = parseInt((location.hash || '').slice(1), 10);
+    if (n > 0) return n;
+    if (embedded) return 1;
+    try { return parseInt(localStorage.getItem(KEY) || '1', 10) || 1; } catch (e) { return 1; }
+  }
+  // Quiet first render: inside the facilitator view, the facilitator sets the
+  // slide (wbi-ready below asks for it), so the deck doesn't report slide 1.
+  show(startAt() - 1, true);
+
+  // Optional continuous participant reading view; facilitator stays slide-by-slide.
+  var scrollToggle=document.getElementById('mtcaScrollToggle');
+  scrollToggle.addEventListener('click',function(){
+    var single=document.documentElement.classList.toggle('single-slide-mode');
+    scrollToggle.textContent=single?'Scroll all slides':'Slide-by-slide';
+    scrollToggle.setAttribute('aria-pressed',String(!single));
+    if(!single) slides[idx].scrollIntoView({block:'start'}); else {window.scrollTo(0,0);slidesEl.scrollTop=0;}
+  });
+  if(embedded) {scrollToggle.hidden=true;document.querySelector('.mtca-main-link').hidden=true;}
+
+  // Typing #40 after the address jumps to slide 40.
+  window.addEventListener('hashchange', function () {
+    var n = parseInt((location.hash || '').slice(1), 10);
+    if (n > 0 && n - 1 !== idx) show(n - 1);
+  });
+  prevBtn.addEventListener('click', function () { show(idx - 1); });
+  nextBtn.addEventListener('click', function () { show(idx + 1); });
+
+  // Section chips double as a table of contents.
+  Array.prototype.forEach.call(document.querySelectorAll('#strip .chip'), function (chip) {
+    chip.addEventListener('click', function () { show(parseInt(chip.getAttribute('data-go'), 10) - 1); });
+  });
+
+  // In-deck jumps (<a href="#18">): slide menus, "Try another one", Done.
+  slidesEl.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var m = (a.getAttribute('href') || '').match(/^#(\d+)$/);
+    if (!m) return;
+    e.preventDefault();
+    show(parseInt(m[1], 10) - 1);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!document.documentElement.classList.contains('single-slide-mode')) return;
+    // Never steal keys from a field: space and the arrows belong to whoever is typing.
+    var t = e.target;
+    if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+    var n = slides.length;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); show(idx + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(idx - 1); }
+    if (e.key === 'Home') { e.preventDefault(); show(0); }
+    if (e.key === 'End') { e.preventDefault(); show(n - 1); }
+  });
+
+  // The facilitator view drives the deck from its "Go to slide" box.
+  window.addEventListener('message', function (ev) {
+    if (!embedded || ev.source !== window.parent) return;
+    var d = ev.data || {};
+    if (d.type === 'wbi-goto' && d.pos > 0) show(d.pos - 1, true);
+  });
+  if (embedded) { try { window.parent.postMessage({ type: 'wbi-ready' }, '*'); } catch (e) {} }
+
+  // ---------- copy buttons ----------
+  var COPY_ICON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="8" height="9" rx="1.25"/><path d="M3 11V3.25A1.25 1.25 0 0 1 4.25 2H10"/></svg>';
+  var CHECK_ICON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg>';
+
+  function getPromptText(block) {
+    var clone = block.cloneNode(true);
+    clone.querySelectorAll('.label, .copy-btn').forEach(function (el) { el.remove(); });
+    return clone.textContent.replace(/^\s+|\s+$/g, '');
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'absolute';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  slidesEl.querySelectorAll('.prompt-block').forEach(function (block) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-btn';
+    btn.setAttribute('aria-label', 'Copy prompt to clipboard');
+    btn.innerHTML = COPY_ICON + '<span class="copy-btn-label">Copy</span>';
+    var resetTimer = null;
+    btn.addEventListener('click', function () {
+      var text = getPromptText(block);
+      var showCopied = function () {
+        btn.classList.add('copied');
+        btn.innerHTML = CHECK_ICON + '<span class="copy-btn-label">Copied</span>';
+        if (resetTimer) clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () {
+          btn.classList.remove('copied');
+          btn.innerHTML = COPY_ICON + '<span class="copy-btn-label">Copy</span>';
+        }, 3000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showCopied).catch(function () { fallbackCopy(text); showCopied(); });
+      } else {
+        fallbackCopy(text);
+        showCopied();
+      }
+    });
+    block.appendChild(btn);
+  });
+})();
+
+</script>
+</body>
+</html>
